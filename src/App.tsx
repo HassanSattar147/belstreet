@@ -1,12 +1,30 @@
+import React from "react";
 import "./App.css";
-import PageTwo from "./components/PageTwo";
-import PageThree from "./components/PageThree";
+import EvaluationPage from "./components/EvaluationPage";
+import SearchPage from "./components/SearchPage";
+import Homepage from "./components/Homepage";
 
 function App() {
+  const [isSearchPage, setIsSearchPage] = React.useState<boolean | undefined>(
+    true
+  );
+
+  /* 
+    NOTES:
+      isSearchPage -> undefined -> homepage
+      isSearchPage -> true      -> Search Page
+      isSearchPage -> false     -> Evaluation Page
+  */
+
   return (
     <div>
-      {!false && <PageTwo />}
-      {false && <PageThree />}
+      {typeof isSearchPage === "undefined" ? (
+        <Homepage setIsSearchPage={setIsSearchPage} />
+      ) : isSearchPage ? (
+        <SearchPage setIsSearchPage={setIsSearchPage} />
+      ) : (
+        <EvaluationPage setIsSearchPage={setIsSearchPage} />
+      )}
     </div>
   );
 }
