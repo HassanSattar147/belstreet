@@ -1,0 +1,142 @@
+.page-two {
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  padding-bottom: 100px;
+}
+
+.page-two-content {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.page-two-content__header {
+  margin-bottom: 28px;
+  width: 80%;
+}
+
+.page-two-content__header > h2 {
+  margin-bottom: 32px;
+}
+.page-two-content__header > p {
+  margin-bottom: 12px;
+  color: #495262;
+}
+
+.page-two-content__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-bottom: 22px;
+}
+
+/* card styles */
+/* page-two-content__body__card */
+.page-two-content__body > * {
+  border-radius: 16px;
+  border: 1px solid #d9d9d9;
+  background: #fff;
+  height: 100%;
+  padding: 40px 20px;
+}
+
+.page-two-content__body > * > h4 {
+  color: #2d1d1a;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.page-two-content__footer > .back-btn {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-two-content__footer .tou-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+}
+
+.page-two-content__footer .tou-check__check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-two-content__footer .tou-check__check p {
+  font-size: 12px;
+}
+
+.page-two-content__footer .tou-check__check input[type="checkbox"] {
+  accent-color: #12203a;
+  cursor: pointer;
+}
+
+.button-back-to-home-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.button-back-to-home-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* By default the styles are for desktop view */
+
+/* Media Queries for tablet devices */
+
+@media screen and (max-width: 992px) {
+  .page-two-content__header {
+    text-align: center;
+    width: 100%;
+  }
+  .page-two-content__body {
+    grid-template-columns: 1fr;
+  }
+  .page-two-content__footer .tou-check {
+    flex-direction: column;
+    margin-bottom: 50px;
+  }
+}
+
+/* Media Queries for mobile devices */
+
+@media screen and (max-width: 576px) {
+  .page-two-content {
+    width: 90%;
+  }
+  .page-two-content__header {
+    text-align: left;
+    width: 90%;
+    margin: 0 auto 28px;
+  }
+  .labeled-ratings__wrapper {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px;
+  }
+
+  .labeled-ratings__wrapper .ratings-label {
+    align-self: flex-start;
+  }
+  .input_data {
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+  .input_label {
+    width: 100%;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+}
+
+/* Cards styles */
+
+.ratings-row > * {
+  margin-bottom: 24px;
+}
