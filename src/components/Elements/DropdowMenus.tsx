@@ -1,49 +1,79 @@
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 import Input from "./Input";
 import downBtn from "../../../public/assets/common/downBtn.png";
-import DropdowCustomHook from "../Elements/DropdowCustomHook";
+import useClickOutside from "./useClickOutside";
+import "../../styles/elements.css";
 
-interface Props {
-  listArr: { text: string }[];
+export interface LV {
+  label: string | number | ReactElement;
+  value: string | number;
 }
 
-const DropdowMenus = ({ listArr }: Props) => {
-  const [isActiveDropdown, setIsActiveDropdown] = useState(false);
+interface Props {
+  options: LV[];
+  selectedLV: LV | undefined;
+  setSelectedLV: (x: LV) => void;
+}
 
-  const dropdownVisibility = DropdowCustomHook(() => {
-    setIsActiveDropdown(false);
+const DropdowMenus = ({ options, selectedLV, setSelectedLV }: Props) => {
+  const [isDDActive, setIsDDActive] = useState(false);
+  const [searchStr, setSearchStr] = useState("");
+
+  const ddRef = useClickOutside(() => {
+    setIsDDActive(false);
   });
 
   const handlerDropdown = () => {
-    setIsActiveDropdown(!isActiveDropdown);
+    setIsDDActive(!isDDActive);
   };
 
   return (
-    <div className="input-option" ref={dropdownVisibility}>
+    <div className="dd-wrapper" ref={ddRef}>
       <Input
         placeholder="Choose Your Municipality"
-        styles={{
-          paddingRight: "45px",
-        }}
-      />
-      <img
-        onClick={handlerDropdown}
-        src={downBtn}
-        alt=""
         style={{
-          position: "absolute",
-          right: "-5px",
-          top: "50%",
-          padding: "10px",
-          transform: "translate(-50%, -50%)",
-          cursor: "pointer",
+          paddingRight: "40px",
         }}
+        onFocus={() => setIsDDActive(true)}
+        onBlur={() => setIsDDActive(false)}
+        value={searchStr}
+        valueSetter={setSearchStr}
       />
-      <div className={`dropdown-menu ${isActiveDropdown ? "active" : ""}`}>
-        {listArr.map((e) => {
-          return <div className="list">{e.text}</div>;
-        })}
+      <div
+        onClick={handlerDropdown}
+        className="dd-btn-container"
+        style={{
+          backgroundColor: isDDActive ? "#0003" : "",
+        }}
+      >
+        <img src={downBtn} alt="" />
       </div>
+
+      {isDDActive && (
+        <div className={`dropdown-menu`}>
+          {options
+            .filter((e) =>
+              e.label.toString().toLowerCase().includes(searchStr.toLowerCase())
+            )
+            .map((e) => {
+              const isSelected = selectedLV?.value === e.value;
+              return (
+                <div
+                  className="dropdown-menu-item"
+                  onClick={() => {
+                    setSelectedLV(e);
+                  }}
+                  style={{
+                    backgroundColor: isSelected ? "#0003" : "",
+                    color: isSelected ? "#000" : "",
+                  }}
+                >
+                  {e.label}
+                </div>
+              );
+            })}
+        </div>
+      )}
     </div>
   );
 };

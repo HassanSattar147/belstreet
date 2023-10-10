@@ -119,3 +119,62 @@
 .secondary:active {
   background-color: #c2bfbf;
 }
+
+.dd-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.dd-btn-container {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  transition: all 0.1s ease-in-out;
+}
+
+.dd-btn-container:hover {
+  background-color: #0001;
+}
+
+.dd-btn-container:active {
+  background-color: #0003;
+}
+
+.dropdown-menu {
+  background-color: #ffffff;
+  position: absolute;
+  left: 0%;
+  top: 50px;
+  border-radius: 8px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);
+  min-width: 100px;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  /* height: 0; */
+}
+
+.dropdown-menu-item {
+  padding: 10px;
+  color: #888;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.dropdown-menu-item:hover {
+  color: #000;
+  background-color: #8882;
+}
+
+.dropdown-menu-item:not(:last-child) {
+  border-bottom: 0.5px solid rgba(128, 128, 128, 0.171);
+  padding-bottom: 5px;
+}

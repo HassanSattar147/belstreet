@@ -169,42 +169,6 @@
   background-color: #af7009;
 }
 
-.input-option {
-  position: relative;
-}
-
-.dropdown-menu {
-  background-color: #ffffff;
-  position: absolute;
-  left: 60%;
-  top: 45px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-  font-size: 16px;
-  color: gray;
-  padding: 10px 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);
-  min-width: 300px;
-  cursor: pointer;
-  /* height: 0; */
-  display: none;
-}
-
-.list:not(:last-child) {
-  border-bottom: 0.5px solid rgba(128, 128, 128, 0.171);
-  padding-bottom: 5px;
-}
-
-.list:hover {
-  color: rgb(66, 66, 66);
-}
-
-.active {
-  display: flex;
-}
 
 /* Media Queries for mobile devices */
 @media screen and (max-width: 576px) {
