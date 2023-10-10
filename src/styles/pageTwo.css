@@ -86,6 +86,40 @@
   text-align: center;
 }
 
+/* Extended Styles */
+
+/* Cards styles */
+.ratings-row > * {
+  margin-bottom: 24px;
+}
+
+/* Modals */
+.review-modal {
+  text-align: center;
+}
+
+.review-modal > * {
+  margin-bottom: 24px;
+}
+
+.review-modal > p {
+  width: 80%;
+  margin: 0 auto 24px;
+  color: #495262;
+}
+
+.review-modal > h3 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.review-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
 /* By default the styles are for desktop view */
 
 /* Media Queries for tablet devices */
@@ -135,8 +169,17 @@
   }
 }
 
-/* Cards styles */
+/* Extra Media Queries */
 
-.ratings-row > * {
-  margin-bottom: 24px;
+@media screen and (max-width: 600px) {
+  .review-modal > p {
+    width: 90%;
+  }
+  
+  .review-modal__footer {
+    flex-direction: column;
+  }
+  
 }
+
+

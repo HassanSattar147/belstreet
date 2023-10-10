@@ -87,6 +87,7 @@
 }
 
 .primary {
+  border: 1px solid #f29d10;
   background-color: #f29d10;
   border: none;
   padding: 10px;
@@ -207,11 +208,11 @@
   transform: translate(-50%, -50%);
   background-color: #fff;
   border-radius: 20px;
-  padding: 20px;
+  padding: 40px 20px;
   border: 1px solid #d9d9d9;
 }
 
-.modal__content__wrapper { 
+.modal__content__wrapper {
   width: 600px;
   min-width: 600px;
   min-height: 100px;
@@ -237,4 +238,11 @@
 }
 .modal__content__cross-btn:active {
   background-color: #d84e4e;
+}
+
+@media screen and (max-width: 600px) {
+  .modal__content__wrapper {
+    width: 80vw;
+    min-width: 80vw;
+  }
 }
