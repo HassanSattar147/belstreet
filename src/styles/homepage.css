@@ -1,0 +1,88 @@
+.homepage-content {
+  width: 700px;
+  margin: 0 auto;
+}
+
+.homepage-content-header {
+  margin-bottom: 50px;
+}
+
+.homepage-content-header > h2 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 32px;
+  width: 90%;
+  margin: 0 auto 40px;
+}
+
+.homepage-content-header > p {
+  margin-bottom: 12px;
+  color: #495262;
+  text-align: center;
+}
+
+.special-text {
+  color: #db8c0d;
+  position: relative;
+}
+
+.special-text img {
+  position: absolute;
+  right: 0%;
+  top: 80%;
+  width: 90%;
+}
+
+.page-nav-cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.page-card {
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  padding: 40px 30px;
+  text-align: center;
+  min-width: 220px;
+  user-select: none;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.page-card > img {
+  margin-bottom: 30px;
+}
+
+.page-card > p {
+  color: #666;
+}
+
+.page-card:hover > p {
+  color: #000;
+}
+
+.page-card:hover {
+  background-color: #aaa1;
+}
+
+.page-card:active {
+  background-color: #aaa1;
+  border-color: #db8c0d;
+}
+
+@media screen and (max-width: 700px) {
+  .homepage-content {
+    width: 90%;
+  }
+  .homepage-content-header > h2 {
+    font-size: 20px;
+  }
+  .homepage-content-header > p {
+    font-size: 14px;
+  }
+  .page-nav-cards {
+    flex-direction: column;
+  }
+}
