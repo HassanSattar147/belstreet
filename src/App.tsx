@@ -5,9 +5,8 @@ import PageThree from "./components/PageThree";
 function App() {
   return (
     <div>
-      {false && <PageTwo />}
-
-      <PageThree />
+      {!false && <PageTwo />}
+      {false && <PageThree />}
     </div>
   );
 }

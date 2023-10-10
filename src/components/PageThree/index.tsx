@@ -10,7 +10,7 @@ import Like from "../../../public/assets/common/Like.png";
 import UnderLine from "../../../public/assets/common/Under line.png";
 import rightBtn from "../../../public/assets/common/rightBtn.png";
 import leftBtn from "../../../public/assets/common/leftBtn.png";
-import DropdowMenus, { LV } from "../Elements/DropdowMenus";
+import DropDownMenu, { LV } from "../Elements/DropDownMenu";
 
 interface TableDataResponse {
   draw: number;
@@ -105,7 +105,7 @@ const index = () => {
           <div className="choose-data">
             <div className="input_data-items">
               <label className="input_label">Municipality: </label>
-              <DropdowMenus
+              <DropDownMenu
                 options={[
                   { value: "id1", label: "id1: Hello world" },
                   { value: "id2", label: "id2: khello" },
