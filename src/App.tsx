@@ -15,15 +15,17 @@ function App() {
   */
 
   return (
-    <div>
-      {typeof isSearchPage === "undefined" ? (
-        <Homepage setIsSearchPage={setIsSearchPage} />
-      ) : isSearchPage ? (
-        <SearchPage setIsSearchPage={setIsSearchPage} />
-      ) : (
-        <EvaluationPage setIsSearchPage={setIsSearchPage} />
-      )}
-    </div>
+    <>
+      <div>
+        {typeof isSearchPage === "undefined" ? (
+          <Homepage setIsSearchPage={setIsSearchPage} />
+        ) : isSearchPage ? (
+          <SearchPage setIsSearchPage={setIsSearchPage} />
+        ) : (
+          <EvaluationPage setIsSearchPage={setIsSearchPage} />
+        )}
+      </div>
+    </>
   );
 }
 
