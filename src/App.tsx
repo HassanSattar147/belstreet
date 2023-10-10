@@ -5,9 +5,7 @@ import SearchPage from "./components/SearchPage";
 import Homepage from "./components/Homepage";
 
 function App() {
-  const [isSearchPage, setIsSearchPage] = React.useState<boolean | undefined>(
-    true
-  );
+  const [isSearchPage, setIsSearchPage] = React.useState<boolean | undefined>();
 
   /* 
     NOTES:
