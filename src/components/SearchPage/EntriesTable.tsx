@@ -88,7 +88,24 @@ const columns: ColumnsType<DataType> = [
     key: "operation",
     fixed: "right",
     width: 120,
-    render: () => <a>View Details</a>,
+    render: (renderParam) => (
+      <a
+        onClick={() => {
+          window.dispatchEvent(
+            new CustomEvent("view-details", {
+              detail: {
+                rowIndex: renderParam.key,
+              },
+            })
+          );
+        }}
+        style={{
+          color: "#000",
+        }}
+      >
+        View Details
+      </a>
+    ),
   },
 ];
 
@@ -97,7 +114,6 @@ interface Props {
 }
 
 const EntriesTable: React.FC<Props> = ({ responseData }) => {
-  
   const dataToShow: DataType[] = React.useMemo(() => {
     if (
       typeof responseData === "undefined" ||
@@ -140,7 +156,7 @@ const EntriesTable: React.FC<Props> = ({ responseData }) => {
     <Table
       columns={columns}
       dataSource={dataToShow}
-      scroll={{ x: 1500, y: 300 }}
+      scroll={{ x: 1500, y: 400 }}
       bordered
     />
   );

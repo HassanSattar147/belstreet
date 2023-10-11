@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Nav from "../Nav";
 import "../../styles/pageThree.css";
 import Input from "../Elements/Input";
@@ -38,10 +38,10 @@ export interface TableDataResponse {
 const index = () => {
   const [response, setResponse] = useState<TableDataResponse>();
   const [municipalityLV, setMunicipalityLV] = useState<LV>();
-  const [showModal, setShowModal] = useState(false);
+  const [selectedRowIndex, setSelectedRowIndex] = useState<number>();
 
   const handleCloseModal = () => {
-    setShowModal(false);
+    setSelectedRowIndex(undefined);
   };
 
   const fetchData = () => {
@@ -64,6 +64,28 @@ const index = () => {
   };
 
   useEffect(fetchData, []);
+
+  useEffect(() => {
+    const handleViewDetails = (e: Event) => {
+      const index = (e as CustomEvent).detail.rowIndex as number;
+      setSelectedRowIndex(index);
+    };
+
+    window.addEventListener("view-details", handleViewDetails);
+    return () => {
+      window.removeEventListener("view-details", handleViewDetails);
+    };
+  }, []);
+
+  const dataForModal = useMemo(() => {
+    if (
+      typeof selectedRowIndex === "number" &&
+      response &&
+      response.data &&
+      response.data.length > 0
+    )
+      return response.data[selectedRowIndex];
+  }, [selectedRowIndex, response]);
 
   return (
     <>
@@ -163,8 +185,12 @@ const index = () => {
           </Link>
         </div>
       </div>
-      <Modal isOpen={showModal} onClose={handleCloseModal} hideCloseBtn>
-        <RowDetailsModal onClose={handleCloseModal} />
+      <Modal
+        isOpen={typeof selectedRowIndex === "number"}
+        onClose={handleCloseModal}
+        hideCloseBtn
+      >
+        <RowDetailsModal onClose={handleCloseModal} dataRow={dataForModal} />
       </Modal>
     </>
   );

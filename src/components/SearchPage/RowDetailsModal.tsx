@@ -4,9 +4,30 @@ import icon_hear from "../../../public/assets/common/icon-hear.svg";
 import icon_car from "../../../public/assets/common/icon-car.svg";
 import LabeledRatings from "../Elements/LabeledRatings";
 import Button from "../Elements/Button";
+import { DataRow } from ".";
 
-const RowDetailsModal = ({ onClose }: { onClose: () => void }) => {
-  const headingTitle = "Grand Place 0";
+const RowDetailsModal = ({
+  onClose,
+  dataRow,
+}: {
+  onClose: () => void;
+  dataRow: DataRow | undefined;
+}) => {
+  if (!dataRow) return;
+
+  // const [
+  //   zipCode,
+  //   street,
+  //   number,
+  //   airplanesNoise,
+  //   neighborsNoise,
+  //   trafficNoise,
+  //   greenSpaces,
+  //   transportation,
+  //   shops,
+  //   assessment,
+  //   numberOfVotes,
+  // ] = dataRow;
 
   const emptyFunc = () => {};
 
@@ -44,11 +65,10 @@ const RowDetailsModal = ({ onClose }: { onClose: () => void }) => {
   );
   const tempRating = summedRating / tempDupData.length;
   const pieChartDeg = (tempRating / totalRating) * 360;
-  console.log({ pieChartDeg });
 
   return (
     <div className="row-details-modal-wrapper">
-      <div className="row-details-heading">{headingTitle}</div>
+      <div className="row-details-heading">{dataRow[1]}</div>
 
       <div className="row-details-body">
         <div className="row-details-body__pie-chart">
