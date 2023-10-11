@@ -1,5 +1,5 @@
 .page-three {
-  height: 100vh;
+  min-height: 100vh;
   background-color: #f8f8f8;
   padding-bottom: 100px;
 }
@@ -53,7 +53,7 @@
   align-items: center;
   background-color: white;
   padding: 10px 50px;
-  margin-top: 50px;
+  margin: 50px 0;
   border: 1px solid #d9d9d9;
   border-radius: 15px;
   gap: 30px;
@@ -68,10 +68,9 @@
 }
 
 .page-three-database {
-  padding: 20px 80px;
-  padding-top: 40px;
-  padding-bottom: 80px;
+  padding: 20px;
   background-color: #f8f8f8;
+  margin-bottom: 80px;
 }
 
 .database-title {
@@ -203,7 +202,7 @@
   .choose-data {
     width: 100%;
     flex-direction: column;
-    padding: 15px 25px;
+    padding: 15px 25px 25px;
     border-radius: 15px;
     gap: 10px;
   }

@@ -8,18 +8,31 @@ import Street from "../../../public/assets/common/Street.png";
 import Review from "../../../public/assets/common/Reviews.png";
 import Like from "../../../public/assets/common/Like.png";
 import UnderLine from "../../../public/assets/common/Under line.png";
-import rightBtn from "../../../public/assets/common/rightBtn.png";
-import leftBtn from "../../../public/assets/common/leftBtn.png";
 import DropDownMenu, { LV } from "../Elements/DropDownMenu";
 import { Link } from "react-router-dom";
 import Modal from "../Elements/Modal";
 import RowDetailsModal from "./RowDetailsModal";
+import EntriesTable from "./EntriesTable";
 
-interface TableDataResponse {
+export type DataRow = [
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string
+];
+
+export interface TableDataResponse {
   draw: number;
   recordsTotal: number;
   recordsFiltered: number;
-  data: string[][];
+  data: DataRow[];
 }
 
 const index = () => {
@@ -51,10 +64,6 @@ const index = () => {
   };
 
   useEffect(fetchData, []);
-
-  useEffect(() => {
-    console.log(response);
-  }, [response]);
 
   return (
     <>
@@ -142,34 +151,7 @@ const index = () => {
           </div>
         </div>
         <div className="page-three-database">
-          <div className="database-title">
-            <p className="entries">Showing 1 to 10 or 11 entries</p>
-            <div className="pages">
-              <p className="page-no">Show 10 &darr;</p>
-              <p className="text">Entries</p>
-            </div>
-          </div>
-          <div
-            className="database-table"
-            onClick={() => {
-              setShowModal(true);
-            }}
-          >
-            Entries...
-          </div>
-          <div className="pagination">
-            <div className="prev-btn">
-              <img src={leftBtn} alt="" />
-            </div>
-
-            <div className="btn-num">1</div>
-            <div className="btn-num">2</div>
-            <div className="btn-num">3</div>
-
-            <div className="next-btn">
-              <img src={rightBtn} alt="" />
-            </div>
-          </div>
+          <EntriesTable responseData={response?.data} />
         </div>
         <div className="back-btn">
           <Link to={"/"}>
