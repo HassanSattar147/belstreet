@@ -50,21 +50,26 @@
 
 .choose-data {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   background-color: white;
-  padding: 15px 50px;
+  padding: 24px 30px 30px;
   margin: 50px 0 20px;
   border: 1px solid #d9d9d9;
   border-radius: 15px;
-  gap: 30px;
+  gap: 20px;
+}
+
+.filter-btn {
+  width: 130px;
 }
 
 .input_data-items {
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  gap: 3px;
-  margin-bottom: 16px;
+  width: calc((100% - 130px - 40px) / 2);
+}
+
+.input_data-items > label {
+  margin-bottom: 7px;
+  display: inline-block;
 }
 
 .page-three-database {
@@ -195,9 +200,6 @@
     width: 100%;
     align-items: flex-start !important;
     text-align: left !important;
-  }
-  .choosing-data {
-    width: 100%;
   }
   .choose-data {
     width: 100%;

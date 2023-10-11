@@ -7,11 +7,16 @@ interface Props {
   variant: "primary" | "secondary";
   style?: CSSProperties;
   onClick: (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  className?: string;
 }
 
-const Button = ({ text, variant, style, onClick }: Props) => {
+const Button = ({ text, variant, style, onClick, className }: Props) => {
   return (
-    <button className={variant} style={style} onClick={onClick}>
+    <button
+      className={variant + " " + className}
+      style={style}
+      onClick={onClick}
+    >
       {text}
     </button>
   );

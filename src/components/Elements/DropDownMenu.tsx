@@ -27,9 +27,11 @@ const DropDownMenu = ({
   const [isDDActive, setIsDDActive] = useState(false);
   const [searchStr, setSearchStr] = useState("");
 
-  const ddRef = useClickOutside(() => {
+  const handleCloseDD = () => {
     setIsDDActive(false);
-  });
+  };
+
+  const ddRef = useClickOutside(handleCloseDD);
 
   const handlerDropdown = () => {
     setIsDDActive(!isDDActive);
@@ -42,12 +44,14 @@ const DropDownMenu = ({
       style={containerStyles}
     >
       <Input
-        placeholder="Choose Your Municipality"
+        placeholder={
+          selectedLV ? (selectedLV.label as string) : "Choose Your Municipality"
+        }
         style={{
           paddingRight: "40px",
         }}
         onFocus={() => setIsDDActive(true)}
-        onBlur={() => setIsDDActive(false)}
+        onBlur={handleCloseDD}
         value={searchStr}
         valueSetter={setSearchStr}
       />
@@ -64,23 +68,29 @@ const DropDownMenu = ({
       {isDDActive && (
         <div className={`dropdown-menu`}>
           {options
-            .filter((e) =>
-              e.label.toString().toLowerCase().includes(searchStr.toLowerCase())
+            .filter((option) =>
+              option.label
+                .toString()
+                .toLowerCase()
+                .includes(searchStr.toLowerCase())
             )
-            .map((e) => {
-              const isSelected = selectedLV?.value === e.value;
+            .map((option) => {
+              const isSelected = selectedLV?.value === option.value;
               return (
                 <div
+                  key={option.value}
                   className="dropdown-menu-item"
                   onClick={() => {
-                    setSelectedLV(e);
+                    setSelectedLV(option);
+                    setSearchStr("");
+                    handleCloseDD();
                   }}
                   style={{
                     backgroundColor: isSelected ? "#0003" : "",
                     color: isSelected ? "#000" : "",
                   }}
                 >
-                  {e.label}
+                  {option.label}
                 </div>
               );
             })}
