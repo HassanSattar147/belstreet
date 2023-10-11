@@ -25,6 +25,11 @@ interface TableDataResponse {
 const index = () => {
   const [response, setResponse] = useState<TableDataResponse>();
   const [municipalityLV, setMunicipalityLV] = useState<LV>();
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   const fetchData = () => {
     const myHeaders = new Headers();
@@ -144,7 +149,14 @@ const index = () => {
               <p className="text">Entries</p>
             </div>
           </div>
-          <div className="database-table">Entries...</div>
+          <div
+            className="database-table"
+            onClick={() => {
+              setShowModal(true);
+            }}
+          >
+            Entries...
+          </div>
           <div className="pagination">
             <div className="prev-btn">
               <img src={leftBtn} alt="" />
@@ -169,8 +181,8 @@ const index = () => {
           </Link>
         </div>
       </div>
-      <Modal isOpen={true} onClose={() => {}} hideCloseBtn>
-        <RowDetailsModal />
+      <Modal isOpen={showModal} onClose={handleCloseModal} hideCloseBtn>
+        <RowDetailsModal onClose={handleCloseModal} />
       </Modal>
     </>
   );
