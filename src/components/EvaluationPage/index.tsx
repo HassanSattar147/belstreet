@@ -9,12 +9,9 @@ import Button from "../Elements/Button";
 import Modal from "../Elements/Modal";
 import attentionIcon from "../../../public/assets/common/attention-icon.svg";
 import successIcon from "../../../public/assets/common/success-icon.svg";
+import { Link } from "react-router-dom";
 
-const PageTwo = ({
-  setIsSearchPage,
-}: {
-  setIsSearchPage: (x: boolean | undefined) => void;
-}) => {
+const PageTwo = () => {
   const [showAttentionModal, setShowAttentionModal] = React.useState(false);
   const [showSuccessModal, setShowSuccessModal] = React.useState(false);
 
@@ -57,13 +54,13 @@ const PageTwo = ({
               <Button text="Send" variant="primary" onClick={() => {}} />
             </div>
             <div className="button-back-to-home-container">
-              <Button
-                text="Back to home"
-                variant="secondary"
-                onClick={() => {
-                  setIsSearchPage(undefined);
-                }}
-              />
+              <Link to={"/"}>
+                <Button
+                  text="Back to home"
+                  variant="secondary"
+                  onClick={() => {}}
+                />
+              </Link>
             </div>
           </div>
         </div>
@@ -93,14 +90,14 @@ const PageTwo = ({
                 : "Your review has been submitted, You can submit another review after 48 hours.  "}
             </p>
             <div className="review-modal__footer">
-              <Button
-                onClick={() => {
-                  setIsSearchPage(undefined);
-                }}
-                text="Back To Home"
-                variant="secondary"
-                style={{ backgroundColor: "#fff" }}
-              />
+              <Link to={"/evaluation-page"}>
+                <Button
+                  onClick={() => {}}
+                  text="Back To Home"
+                  variant="secondary"
+                  style={{ backgroundColor: "#fff" }}
+                />
+              </Link>
               {showAttentionModal && (
                 <Button
                   onClick={() => {

@@ -11,6 +11,7 @@ import UnderLine from "../../../public/assets/common/Under line.png";
 import rightBtn from "../../../public/assets/common/rightBtn.png";
 import leftBtn from "../../../public/assets/common/leftBtn.png";
 import DropDownMenu, { LV } from "../Elements/DropDownMenu";
+import { Link } from "react-router-dom";
 
 interface TableDataResponse {
   draw: number;
@@ -19,11 +20,7 @@ interface TableDataResponse {
   data: string[][];
 }
 
-const index = ({
-  setIsSearchPage,
-}: {
-  setIsSearchPage: (x: boolean | undefined) => void;
-}) => {
+const index = () => {
   const [response, setResponse] = useState<TableDataResponse>();
   const [municipalityLV, setMunicipalityLV] = useState<LV>();
 
@@ -160,13 +157,9 @@ const index = ({
         </div>
       </div>
       <div className="back-btn">
-        <Button
-          onClick={() => {
-            setIsSearchPage(undefined);
-          }}
-          text="Back To Home"
-          variant="secondary"
-        />
+        <Link to={"/"}>
+          <Button onClick={() => {}} text="Back To Home" variant="secondary" />
+        </Link>
       </div>
     </div>
   );

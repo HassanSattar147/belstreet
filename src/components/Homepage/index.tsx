@@ -4,12 +4,9 @@ import "../../styles/homepage.css";
 import UnderLine from "../../../public/assets/common/Under line.png";
 import searchPageIcon from "../../../public/assets/common/search-page-icon.svg";
 import evaluatePageIcon from "../../../public/assets/common/evaluate-page-icon.svg";
+import { Link } from "react-router-dom";
 
-const Homepage = ({
-  setIsSearchPage,
-}: {
-  setIsSearchPage: (x: boolean | undefined) => void;
-}) => {
+const Homepage = () => {
   return (
     <div>
       <Nav />
@@ -35,30 +32,20 @@ const Homepage = ({
           </p>
         </div>
         <div className="page-nav-cards">
-          <div
-            className="page-card"
-            onClick={() => {
-              setIsSearchPage(false);
-            }}
-          >
+          <Link to={"/evaluation-page"} className="page-card">
             <img src={evaluatePageIcon} alt="" />
             <p>
               Evaluate <br />
               your street
             </p>
-          </div>
-          <div
-            className="page-card"
-            onClick={() => {
-              setIsSearchPage(true);
-            }}
-          >
+          </Link>
+          <Link to={"/search-page"} className="page-card">
             <img src={searchPageIcon} alt="" />
             <p>
               Search <br />
               the database
             </p>
-          </div>
+          </Link>
         </div>
       </div>
     </div>
