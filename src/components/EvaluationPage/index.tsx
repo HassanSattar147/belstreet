@@ -15,6 +15,20 @@ const PageTwo = () => {
   const [showAttentionModal, setShowAttentionModal] = React.useState(true);
   const [showSuccessModal, setShowSuccessModal] = React.useState(false);
 
+  const [street, setStreet] = React.useState("");
+  const [optionalNumber, setOptionalNumber] = React.useState("");
+  const [optionalAlias, setOptionalAlias] = React.useState("");
+  const [optionalComments, setOptionalComments] = React.useState("");
+  // NR means Noise Ratio
+  const [planeNR, setPlaneNR] = React.useState(0);
+  const [neighborNR, setNeighborNR] = React.useState(0);
+  const [trafficNR, setTrafficNR] = React.useState(0);
+  const [greenSpaceNR, setGreenSpaceNR] = React.useState(0);
+  const [transportNR, setTransportNR] = React.useState(0);
+  const [commercesNR, setCommercesNR] = React.useState(0);
+
+  const isSubmitable = () => {};
+
   return (
     <>
       <div className="page-two">
@@ -37,8 +51,22 @@ const PageTwo = () => {
 
           <div className="page-two-content__body">
             <EnterData />
-            <DifficultyCriteria />
-            <HappinessCriteria />
+            <DifficultyCriteria
+              planeNR={planeNR}
+              neighborNR={neighborNR}
+              trafficNR={trafficNR}
+              setPlaneNR={setPlaneNR}
+              setNeighborNR={setNeighborNR}
+              setTrafficNR={setTrafficNR}
+            />
+            <HappinessCriteria
+              greenSpaceNR={greenSpaceNR}
+              transportNR={transportNR}
+              commercesNR={commercesNR}
+              setGreenSpaceNR={setGreenSpaceNR}
+              setTransportNR={setTransportNR}
+              setCommercesNR={setCommercesNR}
+            />
             <Comment />
           </div>
 
