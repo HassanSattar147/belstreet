@@ -10,15 +10,19 @@ import Modal from "../Elements/Modal";
 import attentionIcon from "../../../public/assets/common/attention-icon.svg";
 import successIcon from "../../../public/assets/common/success-icon.svg";
 import { Link } from "react-router-dom";
+import { LV } from "../Elements/DropDownMenu";
 
 const PageTwo = () => {
+  // Modal states
   const [showAttentionModal, setShowAttentionModal] = React.useState(true);
   const [showSuccessModal, setShowSuccessModal] = React.useState(false);
 
+  // Data states
   const [street, setStreet] = React.useState("");
   const [optionalNumber, setOptionalNumber] = React.useState("");
   const [optionalAlias, setOptionalAlias] = React.useState("");
   const [optionalComments, setOptionalComments] = React.useState("");
+
   // NR means Noise Ratio
   const [planeNR, setPlaneNR] = React.useState(0);
   const [neighborNR, setNeighborNR] = React.useState(0);
@@ -27,7 +31,29 @@ const PageTwo = () => {
   const [transportNR, setTransportNR] = React.useState(0);
   const [commercesNR, setCommercesNR] = React.useState(0);
 
-  const isSubmitable = () => {};
+  const [municipalityLV, setMunicipalityLV] = React.useState<LV>();
+
+  const isSubmitable = () => {
+    const isMunicipalitySelected = typeof municipalityLV !== "undefined";
+    const isStreetEntered = street.length > 0;
+    const isPlaneNREntered = planeNR > 0;
+    const isNeighborNREntered = neighborNR > 0;
+    const isTrafficNREntered = trafficNR > 0;
+    const isGreenSpaceNR = greenSpaceNR > 0;
+    const isTransportNR = transportNR > 0;
+    const isCommercesNR = commercesNR > 0;
+
+    return (
+      isMunicipalitySelected &&
+      isStreetEntered &&
+      isPlaneNREntered &&
+      isNeighborNREntered &&
+      isTrafficNREntered &&
+      isGreenSpaceNR &&
+      isTransportNR &&
+      isCommercesNR
+    );
+  };
 
   return (
     <>
@@ -50,7 +76,14 @@ const PageTwo = () => {
           </div>
 
           <div className="page-two-content__body">
-            <EnterData />
+            <EnterData
+              municipalityLV={municipalityLV}
+              setMunicipalityLV={setMunicipalityLV}
+              street={street}
+              setStreet={setStreet}
+              optionalNumber={optionalNumber}
+              setOptionalNumber={setOptionalNumber}
+            />
             <DifficultyCriteria
               planeNR={planeNR}
               neighborNR={neighborNR}
@@ -67,7 +100,12 @@ const PageTwo = () => {
               setTransportNR={setTransportNR}
               setCommercesNR={setCommercesNR}
             />
-            <Comment />
+            <Comment
+              optionalAlias={optionalAlias}
+              setOptionalAlias={setOptionalAlias}
+              optionalComments={optionalComments}
+              setOptionalComments={setOptionalComments}
+            />
           </div>
 
           <div className="page-two-content__footer">
@@ -83,6 +121,9 @@ const PageTwo = () => {
                 text="Send"
                 variant="primary"
                 onClick={() => {
+                  if (!isSubmitable()) {
+                    return alert("Please enter all the details. Thanks!");
+                  }
                   setShowSuccessModal(true);
                 }}
               />
@@ -124,7 +165,7 @@ const PageTwo = () => {
                 : "Your review has been submitted, You can submit another review after 48 hours.  "}
             </p>
             <div className="review-modal__footer">
-              <Link to={"/evaluation-page"}>
+              <Link to={"/"}>
                 <Button
                   onClick={() => {}}
                   text="Back To Home"
