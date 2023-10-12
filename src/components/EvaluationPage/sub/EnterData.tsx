@@ -7,9 +7,9 @@ const EnterData = () => {
   return (
     <div>
       <h4>Start to enter your data</h4>
-      <div className="input_data">
-        <label className="input_label">Municipality </label>
-        <div className="flex-3">
+      <div className="enter-data-row">
+        <label className="enter-data-col-1">Municipality</label>
+        <div className="enter-data-col-2">
           <DropDownMenu
             options={[
               { value: "id1", label: "Hello world" },
@@ -24,11 +24,11 @@ const EnterData = () => {
         </div>
       </div>
       <div className="input_data">
-        <label className="input_label">Street </label>
+        <label className="input_label">Street</label>
         <Input placeholder="Choose Your Street" />
       </div>
       <div className="input_data">
-        <label className="input_label">Number (optional): </label>
+        <label className="input_label">Number (optional):</label>
         <Input placeholder="Choose Your Number (optional)" />
       </div>
     </div>

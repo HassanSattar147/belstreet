@@ -74,6 +74,26 @@
   text-align: right;
 }
 
+.enter-data-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+
+.enter-data-row > label {
+  font-size: 14px;
+  text-align: right;
+}
+
+.enter-data-col-1 {
+    width: calc(40% - 16px);
+}
+
+.enter-data-col-2 {
+  flex: 3;
+}
+
 .input {
   padding: 10px 10px;
   font-size: 14px;
