@@ -111,9 +111,18 @@ const columns: ColumnsType<DataType> = [
 
 interface Props {
   responseData: DataRow[] | undefined;
+  totalRecods: number;
+  pageNo: number;
+  setPageNo: (x: number) => void;
 }
 
-const EntriesTable: React.FC<Props> = ({ responseData }) => {
+const EntriesTable: React.FC<Props> = ({
+  responseData,
+  totalRecods,
+  pageNo,
+  setPageNo,
+}) => {
+  
   const dataToShow: DataType[] = React.useMemo(() => {
     if (
       typeof responseData === "undefined" ||
@@ -158,6 +167,18 @@ const EntriesTable: React.FC<Props> = ({ responseData }) => {
       dataSource={dataToShow}
       scroll={{ x: 1500, y: 400 }}
       bordered
+      pagination={{
+        onChange: (x) => {
+          const currentPageNumber = x;
+          setPageNo(currentPageNumber);
+        },
+        hideOnSinglePage: true,
+        defaultCurrent: pageNo,
+        defaultPageSize: 10,
+        pageSize: 10,
+        current: pageNo,
+        total: totalRecods,
+      }}
     />
   );
 };
