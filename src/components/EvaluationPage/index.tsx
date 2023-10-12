@@ -12,7 +12,7 @@ import successIcon from "../../../public/assets/common/success-icon.svg";
 import { Link } from "react-router-dom";
 
 const PageTwo = () => {
-  const [showAttentionModal, setShowAttentionModal] = React.useState(false);
+  const [showAttentionModal, setShowAttentionModal] = React.useState(true);
   const [showSuccessModal, setShowSuccessModal] = React.useState(false);
 
   return (
@@ -51,7 +51,13 @@ const PageTwo = () => {
                   and <a href="#">privacy policy</a>.
                 </p>
               </div>
-              <Button text="Send" variant="primary" onClick={() => {}} />
+              <Button
+                text="Send"
+                variant="primary"
+                onClick={() => {
+                  setShowSuccessModal(true);
+                }}
+              />
             </div>
             <div className="button-back-to-home-container">
               <Link to={"/"}>

@@ -12,11 +12,11 @@ const EnterData = () => {
         <div className="flex-3">
           <DropDownMenu
             options={[
-              { value: "id1", label: "id1: Hello world" },
-              { value: "id2", label: "id2: khello" },
-              { value: "id3", label: "id3: world" },
-              { value: "id4", label: "id4: world Khello" },
-              { value: "id5", label: "id5: bye" },
+              { value: "id1", label: "Hello world" },
+              { value: "id2", label: "khello" },
+              { value: "id3", label: "world" },
+              { value: "id4", label: "world Khello" },
+              { value: "id5", label: "bye" },
             ]}
             selectedLV={municipalityLV}
             setSelectedLV={setMunicipalityLV}
