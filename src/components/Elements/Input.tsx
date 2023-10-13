@@ -1,7 +1,7 @@
 // import React from "react";
 import "../../styles/elements.css";
 
-interface Props {
+export interface InputProps {
   placeholder: string;
   defaultValue?: string;
   style?: React.CSSProperties;
@@ -19,7 +19,7 @@ const Input = ({
   onBlur,
   value,
   valueSetter,
-}: Props) => {
+}: InputProps) => {
   const commonProps = {
     type: "text",
     className: "input",
