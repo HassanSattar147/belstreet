@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Nav from "../Nav";
 import "../../styles/pageTwo.css";
 import EnterData from "./sub/EnterData";
@@ -11,10 +11,10 @@ import attentionIcon from "../../../public/assets/common/attention-icon.svg";
 import successIcon from "../../../public/assets/common/success-icon.svg";
 import { Link } from "react-router-dom";
 import { LV } from "../Elements/DropDownMenu";
+import { request } from "../../utils/request";
 
 const PageTwo = () => {
   // Modal states
-  const [showAttentionModal, setShowAttentionModal] = React.useState(true);
   const [showSuccessModal, setShowSuccessModal] = React.useState(false);
 
   // Data states
@@ -31,9 +31,19 @@ const PageTwo = () => {
   const [transportNR, setTransportNR] = React.useState(0);
   const [commercesNR, setCommercesNR] = React.useState(0);
 
+  // can submit
+  const [cantSubmit, setCantSubmit] = React.useState(true);
+
+  useEffect(() => {
+    request("/IP.php", {})
+    .then(d => setCantSubmit(!d.success));
+  }, []);
+
   const [municipalityLV, setMunicipalityLV] = React.useState<LV>();
 
-  const isSubmitable = () => {
+  const isSubmitable = async () => {
+    const d = await request("/IP.php", {})
+    setCantSubmit(!d.success);
     const isMunicipalitySelected = typeof municipalityLV !== "undefined";
     const isStreetEntered = street.length > 0;
     const isPlaneNREntered = planeNR > 0;
@@ -141,26 +151,26 @@ const PageTwo = () => {
         </div>
       </div>
       <Modal
-        isOpen={showAttentionModal || showSuccessModal}
+        isOpen={cantSubmit || showSuccessModal}
         onClose={() => {
           // This method will not execute becuase of
           // isCloseable={false}. You can check the
           // Modal.tsx for further details.
-          setShowAttentionModal(false);
+          setCantSubmit(false);
           setShowSuccessModal(false);
         }}
         isCloseable={false}
         hideCloseBtn
       >
-        {!showAttentionModal && !showSuccessModal ? null : (
+        {!cantSubmit && !showSuccessModal ? null : (
           <div className="review-modal">
             <img
-              src={showAttentionModal ? attentionIcon : successIcon}
+              src={cantSubmit ? attentionIcon : successIcon}
               alt=""
             />
-            <h3>{showAttentionModal ? "Attention" : "Thank You!"}</h3>
+            <h3>{cantSubmit ? "Attention" : "Thank You!"}</h3>
             <p>
-              {showAttentionModal
+              {cantSubmit
                 ? "You have already submitted a Review. You can submit another review after 48 Hours."
                 : "Your review has been submitted, You can submit another review after 48 hours.  "}
             </p>
@@ -173,10 +183,10 @@ const PageTwo = () => {
                   style={{ backgroundColor: "#fff" }}
                 />
               </Link>
-              {showAttentionModal && (
+              {cantSubmit && (
                 <Button
                   onClick={() => {
-                    setShowAttentionModal(false);
+                    setCantSubmit(false);
                     setShowSuccessModal(false);
                   }}
                   text="Back To Review"
