@@ -36,6 +36,7 @@ export interface TableDataResponse {
 }
 
 const index = () => {
+  const length = 10;
   const [response, setResponse] = useState<TableDataResponse>();
   const [municipalityLV, setMunicipalityLV] = useState<LV>();
   const [selectedRowIndex, setSelectedRowIndex] = useState<number>();
@@ -46,22 +47,31 @@ const index = () => {
     setSelectedRowIndex(undefined);
   };
 
-  const fetchData = (municipality: string, street: string, drawNo?: number) => {
+  const fetchData = (municipality, street, drawNo) => {
     const myHeaders = new Headers();
-
     const draw = typeof drawNo === "number" && drawNo > 0 ? drawNo : 1;
-
-    const raw = `draw=${draw}&columns%5B0%5D%5Bdata%5D=0&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=1&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=2&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=3&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B4%5D%5Bdata%5D=4&columns%5B4%5D%5Bname%5D=&columns%5B4%5D%5Bsearchable%5D=true&columns%5B4%5D%5Borderable%5D=true&columns%5B4%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B4%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B5%5D%5Bdata%5D=5&columns%5B5%5D%5Bname%5D=&columns%5B5%5D%5Bsearchable%5D=true&columns%5B5%5D%5Borderable%5D=true&columns%5B5%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B5%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B6%5D%5Bdata%5D=6&columns%5B6%5D%5Bname%5D=&columns%5B6%5D%5Bsearchable%5D=true&columns%5B6%5D%5Borderable%5D=true&columns%5B6%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B6%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B7%5D%5Bdata%5D=7&columns%5B7%5D%5Bname%5D=&columns%5B7%5D%5Bsearchable%5D=true&columns%5B7%5D%5Borderable%5D=true&columns%5B7%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B7%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B8%5D%5Bdata%5D=8&columns%5B8%5D%5Bname%5D=&columns%5B8%5D%5Bsearchable%5D=true&columns%5B8%5D%5Borderable%5D=true&columns%5B8%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B8%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B9%5D%5Bdata%5D=9&columns%5B9%5D%5Bname%5D=&columns%5B9%5D%5Bsearchable%5D=true&columns%5B9%5D%5Borderable%5D=true&columns%5B9%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B9%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B10%5D%5Bdata%5D=10&columns%5B10%5D%5Bname%5D=&columns%5B10%5D%5Bsearchable%5D=true&columns%5B10%5D%5Borderable%5D=true&columns%5B10%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B10%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B11%5D%5Bdata%5D=11&columns%5B11%5D%5Bname%5D=&columns%5B11%5D%5Bsearchable%5D=true&columns%5B11%5D%5Borderable%5D=false&columns%5B11%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B11%5D%5Bsearch%5D%5Bregex%5D=false&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&filter_Commune=${municipality}&filter_Rue=${street}`;
-
+  
+    const params = new URLSearchParams();
+    params.append("draw", draw + "");
+    // ... (append all other fields)
+  
+    params.append("start", ((pageNo - 1) * length) + "");
+    params.append("length", length + "");
+    params.append("search[value]", "");
+    params.append("search[regex]", false + "");
+    params.append("filter_Commune", municipality);
+    params.append("filter_Rue", street);
+  
     const requestOptions = {
       method: "POST",
-      headers: myHeaders,
-      body: raw,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded", // Set Content-Type
+      },
+      body: params,
     };
-
-    fetch("http://localhost:3030/Fetch.php", requestOptions)
-      .then((response) => response.text())
-      .then((response) => JSON.parse(response))
+  
+    fetch("http://192.168.18.5/belstreet/Fetch.php", requestOptions)
+      .then((response) => response.json())
       .then((result) => setResponse(result as TableDataResponse))
       .catch((error) => console.log("error", error));
   };
@@ -99,11 +109,9 @@ const index = () => {
 
   useEffect(() => {
     fetchData("", "");
-    fetchAutofillData;
-    fetchComments;
-    // fetchComments();
-    // fetchAutofillData();
-  }, []);
+    fetchComments();
+    fetchAutofillData();
+  }, [pageNo, length]);
 
   useEffect(() => {
     const handleViewDetails = (e: Event) => {
