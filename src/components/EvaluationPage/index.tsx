@@ -11,11 +11,13 @@ import attentionIcon from "../../../public/assets/common/attention-icon.svg";
 import successIcon from "../../../public/assets/common/success-icon.svg";
 import { Link } from "react-router-dom";
 import { LV } from "../Elements/DropDownMenu";
-import { request } from "../../utils/request";
+import { api, request } from "../../utils/request";
+import toast from "react-hot-toast";
 
 const PageTwo = () => {
   // Modal states
   const [showSuccessModal, setShowSuccessModal] = React.useState(false);
+  const [acceptTerms, setAcceptTerms] = React.useState(false);
 
   // Data states
   const [municipalityLV, setMunicipalityLV] = React.useState<LV>();
@@ -41,8 +43,15 @@ const PageTwo = () => {
   }, []);
 
   const isSubmitable = async () => {
+    if (!acceptTerms) {
+      return toast.error("Accept terms and services to fill the form");
+    }
     const d = await request("/IP.php", {});
     setCantSubmit(!d.success);
+    if (!d.success) {
+      return false;
+    }
+
     const isMunicipalitySelected = typeof municipalityLV !== "undefined";
     const isStreetEntered = selectedStreet.length > 0;
     const isPlaneNREntered = planeNR > 0;
@@ -63,6 +72,36 @@ const PageTwo = () => {
       isCommercesNR
     );
   };
+
+  const handleSubmit = async () => {
+    const formData = new FormData();
+    formData.append("action", "submit");
+    formData.append("token", "03AFcWeA5_4blp6bkTl8b0e6_a_QKSXHPCf0TCBm6fhCZI1ORlct9zsQWUZQjsneMM_WfivqaRH5xbgmhpiwVGiFbdiownW1WNofk2YEWmYwfPNX2jWP6hoiq7UEbYuXhdes68pJ0J0ap0tcRYs5jsZ7-zY2dw-Z9zNRFozAs7R-HLF-TyOicuUGBrnCyx5ZSyB7OUMeTtu-Hl5mU2MECOEoJpKIYr0ztUSj9V8HxX8rAMDdpeBc4L_ULsuUkyqLT__egY88WwVD12bnzyNbhwvixIqg9InsTbZhzo5yFK-iypcPPca9_TWvxg4wVudLS0u5HptC1ra5E-lKg-CuJLhOeIcdt3OEXyhLzvPQjMPwpdTZiGoY_acWfG2uXg8NJy7QZwtlaz1iQq4K4WahXXUo6d8aLZEtf6bsfMG4L93GskWPbeZstQjTQfEUlVmOjKervhoOSfvOU8wzip9nRPvdSKK84aIGJBIHWw13Uuso7AV2jUIu_VhG97AWHJyLgZ7i62deBUfKpnjNbwQcMNuXeftUIKxlN0gPnr66Q1jZICyyYNJzYiKRzsGryT-VoWOYYiC1sM-n_-1uPiiWKXkS2e8S8VzkXNP02-t63nI0Mx3YqOUoBUaiM")
+    formData.append("commune", municipalityLV?.value ? municipalityLV?.value + "" : "");
+    formData.append("rue", street);
+    formData.append("numero", optionalNumber);
+    formData.append("bruit_avion", planeNR + "");
+    formData.append("bruit_voisins", neighborNR + "");
+    formData.append("bruit_traf", trafficNR + "");
+    formData.append("verte", greenSpaceNR + "");
+    formData.append("transport", transportNR + "");
+    formData.append("commerces", commercesNR + "");
+    formData.append("alias", optionalAlias);
+    formData.append("message", optionalComments);
+    formData.append("termes", '1');
+
+    const request = await fetch(api + "/index.php", {
+      method: "POST",
+      headers: {
+      //  "Content-Type": "application/",
+      },
+      body: formData,
+    });
+    const response = await request.json();
+    if (response.message === "Formulaire enregistré correctement.") {
+      setShowSuccessModal(true);
+    }
+  }
 
   return (
     <>
@@ -122,7 +161,7 @@ const PageTwo = () => {
           <div className="page-two-content__footer">
             <div className="tou-check">
               <div className="tou-check__check">
-                <input type="checkbox" />
+                <input type="checkbox" onChange={(e) => setAcceptTerms(e.target.checked)} />
                 <p>
                   By clicking here, I accept the <a href="#">terms</a> of use
                   and <a href="#">privacy policy</a>.
@@ -135,7 +174,8 @@ const PageTwo = () => {
                   if (!isSubmitable()) {
                     return alert("Please enter all the details. Thanks!");
                   }
-                  setShowSuccessModal(true);
+                  handleSubmit();
+                  //setShowSuccessModal(true);
                 }}
               />
             </div>
