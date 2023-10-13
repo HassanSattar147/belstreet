@@ -1,1 +1,9 @@
-{}
+{
+    "UAJxeX": "Acceptez les termes et services pour remplir le formulaire",
+    "dd.choose-commune": "Choisissez Votre Municipalité",
+    "hp.m1": "Évaluez votre rue afin d'aider d'autres utilisateurs.",
+    "hp.m2": "Suivez les étapes suivantes pour évaluer votre rue et numéro. Pas besoin de vous inscrire et 100 % anonyme.",
+    "hp.m3": "N'oubliez pas que vous pouvez laisser le champ « numéro » vide. Dans ce cas, vous évaluez la rue et non un numéro particulier.",
+    "hp.tos": "En cliquant ici, j'accepte les {terms} et {privacyPolicy}.",
+    "stars": "Étoiles"
+  }

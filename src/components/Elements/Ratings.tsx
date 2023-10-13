@@ -1,5 +1,6 @@
 import StarIcon from "./StarIcon";
 import "../../styles/elements.css";
+import { FormattedMessage } from "react-intl";
 
 export interface RatingsProps {
   selectedCount: number;
@@ -30,7 +31,7 @@ const Ratings: React.FC<RatingsProps> = ({
           );
         })}
       </div>
-      <div className="ratings-count">{selectedCount} Stars</div>
+      <div className="ratings-count">{selectedCount} <FormattedMessage id="stars" defaultMessage="Stars" /></div>
     </div>
   );
 };

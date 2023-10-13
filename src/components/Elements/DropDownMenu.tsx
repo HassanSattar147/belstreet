@@ -2,6 +2,7 @@ import { ReactElement, useState } from "react";
 import Input from "./Input";
 import downBtn from "../../../public/assets/common/downBtn.png";
 import useClickOutside from "./useClickOutside";
+import { useIntl } from "react-intl";
 import "../../styles/elements.css";
 
 export interface LV {
@@ -27,6 +28,8 @@ const DropDownMenu = ({
   const [isDDActive, setIsDDActive] = useState(false);
   const [searchStr, setSearchStr] = useState("");
 
+  const intl = useIntl();
+
   const handleCloseDD = () => {
     setIsDDActive(false);
   };
@@ -45,7 +48,7 @@ const DropDownMenu = ({
     >
       <Input
         placeholder={
-          selectedLV ? (selectedLV.label as string) : "Choose Your Municipality"
+          selectedLV ? (selectedLV.label as string) : intl.formatMessage({ id:"dd.choose-commune", defaultMessage: "Choose Your Municipality" })
         }
         style={{
           paddingRight: "40px",

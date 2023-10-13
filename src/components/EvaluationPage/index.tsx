@@ -13,11 +13,14 @@ import { Link } from "react-router-dom";
 import { LV } from "../Elements/DropDownMenu";
 import { api, request } from "../../utils/request";
 import toast from "react-hot-toast";
+import { FormattedMessage, useIntl } from "react-intl";
 
 const PageTwo = () => {
   // Modal states
   const [showSuccessModal, setShowSuccessModal] = React.useState(false);
   const [acceptTerms, setAcceptTerms] = React.useState(false);
+
+  const intl = useIntl();
 
   // Data states
   const [municipalityLV, setMunicipalityLV] = React.useState<LV>();
@@ -44,7 +47,9 @@ const PageTwo = () => {
 
   const isSubmitable = async () => {
     if (!acceptTerms) {
-      toast.error("Accept terms and services to fill the form");
+      toast.error(
+        intl.formatMessage({ defaultMessage: "Accept terms and services to fill the form" })
+      );
       return false;
     }
     const d = await request("/IP.php", {});
@@ -112,15 +117,19 @@ const PageTwo = () => {
         <div className="page-two-content">
           <div className="page-two-content__header">
             <h2 className="color-primary">
-              Rate your street so that it can help other users.
+            <FormattedMessage defaultMessage="Rate your street so that it can help other users." id="hp.m1"/>
             </h2>
             <p>
+            <FormattedMessage defaultMessage="
               Follow the following steps to evaluate your street and number. No
               need to register and 100% anonymous.
+              " id="hp.m2"/>
             </p>
             <p>
+            <FormattedMessage defaultMessage="
               Remember, you can always leave the “number” case blank. In this
               case, you are evaluating the street and not a particular number.
+              " id="hp.m3"/>
             </p>
           </div>
 
@@ -164,8 +173,14 @@ const PageTwo = () => {
               <div className="tou-check__check">
                 <input type="checkbox" onChange={(e) => setAcceptTerms(e.target.checked)} />
                 <p>
-                  By clicking here, I accept the <a href="#">terms</a> of use
-                  and <a href="#">privacy policy</a>.
+                <FormattedMessage
+                  id="hp.tos"
+                  defaultMessage="By clicking here, I accept the {terms} and {privacyPolicy}."
+                  values={{
+                    terms: <a href="#">terms of use</a>,
+                    privacyPolicy: <a href="#">privacy policy</a>
+                  }}
+                />
                 </p>
               </div>
               <Button

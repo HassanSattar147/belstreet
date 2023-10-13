@@ -1,2 +1,9 @@
 {
+  "UAJxeX": "Accept terms and services to fill the form",
+  "dd.choose-commune": "Choose Your Municipality",
+  "hp.m1": "Rate your street so that it can help other users.",
+  "hp.m2": "Follow the following steps to evaluate your street and number. No need to register and 100% anonymous.",
+  "hp.m3": "Remember, you can always leave the “number” case blank. In this case, you are evaluating the street and not a particular number.",
+  "hp.tos": "By clicking here, I accept the {terms} and {privacyPolicy}.",
+  "stars": "Stars"
 }
