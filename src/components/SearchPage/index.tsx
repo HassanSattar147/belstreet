@@ -47,7 +47,7 @@ const index = () => {
     setSelectedRowIndex(undefined);
   };
 
-  const fetchData = (municipality, street, drawNo) => {
+  const fetchData = (municipality: string, street: string, drawNo?: number) => {
     const myHeaders = new Headers();
     const draw = typeof drawNo === "number" && drawNo > 0 ? drawNo : 1;
   
