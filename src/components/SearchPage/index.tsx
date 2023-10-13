@@ -217,7 +217,7 @@ const index = () => {
               <Button
                 onClick={() => {
                   const municipality =
-                    (municipalityLV?.label as string | undefined) || "";
+                    (municipalityLV?.value as string | undefined) || "";
                   const street = filterStreet;
                   fetchData(municipality, street);
                 }}
