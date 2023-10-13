@@ -44,7 +44,8 @@ const PageTwo = () => {
 
   const isSubmitable = async () => {
     if (!acceptTerms) {
-      return toast.error("Accept terms and services to fill the form");
+      toast.error("Accept terms and services to fill the form");
+      return false;
     }
     const d = await request("/IP.php", {});
     setCantSubmit(!d.success);
@@ -170,12 +171,12 @@ const PageTwo = () => {
               <Button
                 text="Send"
                 variant="primary"
-                onClick={() => {
-                  if (!isSubmitable()) {
-                    return alert("Please enter all the details. Thanks!");
+                onClick={async () => {
+                  const canSubmit = await isSubmitable();
+                  if (!canSubmit) {
+                    return toast.error("Required fields are not filled");
                   }
                   handleSubmit();
-                  //setShowSuccessModal(true);
                 }}
               />
             </div>

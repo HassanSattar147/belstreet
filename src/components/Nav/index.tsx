@@ -9,6 +9,9 @@ const Nav: React.FC<Props> = ({ style }) => {
   return (
     <div style={style} className="nav">
       <img src={logo} alt="" />
+      <span style={{ float: "right" }}>
+        
+      </span>
     </div>
   );
 };
