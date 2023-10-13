@@ -29,7 +29,10 @@ const EnterData: FC<Props> = ({
           <DropDownMenu
             options={municipalityOptions}
             selectedLV={municipalityLV}
-            setSelectedLV={setMunicipalityLV}
+            setSelectedLV={(newLV) => {
+              setMunicipalityLV(newLV);
+              setStreet("");
+            }}
           />
         </div>
       </div>
