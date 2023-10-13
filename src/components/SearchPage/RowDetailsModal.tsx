@@ -50,14 +50,19 @@ const RowDetailsModal = ({
     count: string | number
   ) => {
     setIsLoading(true);
+    
+    const formData = new FormData();
+    formData.append('filter_Ruef', streetName);
+    formData.append('Num', num + "");
+    formData.append('Count', count + "");
+
     const res = await fetch(`${api}/Modal_comments.php`, {
-      referrer: "https://www.belstreet.com/Recherche.html",
-      referrerPolicy: "strict-origin-when-cross-origin",
-      body: `filter_Ruef=${streetName}&Num=${num}&Count=${count}`,
       method: "POST",
-      mode: "cors",
+      body: formData // Use the FormData object as the request body
     });
-    const data = await res.json();
+
+const data = await res.json();
+
     setCommentsResponse(data);
     setIsLoading(false);
   };
