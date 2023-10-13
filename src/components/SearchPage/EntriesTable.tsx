@@ -2,6 +2,7 @@ import React from "react";
 import { Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { DataRow } from ".";
+import useIsMobile from "../../utils/useIsMobile";
 
 interface DataType {
   key: React.Key;
@@ -109,6 +110,94 @@ const columns: ColumnsType<DataType> = [
   },
 ];
 
+const mobileColumns: ColumnsType<DataType> = [
+  {
+    title: "ZIP Code",
+    width: 100,
+    dataIndex: "zipCode",
+    key: "zipCode",
+  },
+  {
+    title: "Street",
+    width: 150,
+    dataIndex: "street",
+    key: "street",
+  },
+  {
+    title: "Number",
+    dataIndex: "number",
+    key: "number",
+    width: 100,
+  },
+  {
+    title: "Airplanes Noise",
+    dataIndex: "airplanesNoise",
+    key: "1",
+    width: 150,
+  },
+  {
+    title: "Neighbors Noise",
+    dataIndex: "neighborsNoise",
+    key: "2",
+    width: 150,
+  },
+  {
+    title: "Traffic Noise",
+    dataIndex: "trafficNoise",
+    key: "3",
+    width: 150,
+  },
+  {
+    title: "Green Spaces",
+    dataIndex: "greenSpaces",
+    key: "4",
+    width: 150,
+  },
+  {
+    title: "Transportation",
+    dataIndex: "transportation",
+    key: "5",
+    width: 150,
+  },
+  {
+    title: "Shops",
+    dataIndex: "shops",
+    key: "6",
+    width: 150,
+  },
+  { title: "Assessment", dataIndex: "assessment", key: "7", width: 150 },
+  {
+    title: "Number Of Votes",
+    dataIndex: "numberOfVotes",
+    key: "8",
+    width: 150,
+  },
+  {
+    title: "",
+    key: "operation",
+    fixed: "right",
+    width: 120,
+    render: (renderParam) => (
+      <a
+        onClick={() => {
+          window.dispatchEvent(
+            new CustomEvent("view-details", {
+              detail: {
+                rowIndex: renderParam.key,
+              },
+            })
+          );
+        }}
+        style={{
+          color: "#000",
+        }}
+      >
+        View Details
+      </a>
+    ),
+  },
+];
+
 interface Props {
   responseData: DataRow[] | undefined;
   totalRecods: number;
@@ -122,9 +211,12 @@ const EntriesTable: React.FC<Props> = ({
   totalRecods,
   pageNo,
   setPageNo,
-  onPaginationChange
+  onPaginationChange,
 }) => {
-  
+
+  const isMobile = useIsMobile();
+  // const isMobile = true;
+
   const dataToShow: DataType[] = React.useMemo(() => {
     if (
       typeof responseData === "undefined" ||
@@ -165,7 +257,7 @@ const EntriesTable: React.FC<Props> = ({
 
   return (
     <Table
-      columns={columns}
+      columns={isMobile ? mobileColumns : columns}
       dataSource={dataToShow}
       scroll={{ x: 1500, y: 400 }}
       bordered
