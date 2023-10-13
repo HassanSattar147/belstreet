@@ -232,6 +232,12 @@
     width: 100%;
     margin-top: 20px;
   }
+  .row-details-body {
+    flex-direction: column;
+  }
+  .row-details-body__ratings {
+    width: 100% !important;
+  }
 }
 
 /* row details modal styles */
@@ -302,9 +308,6 @@
 }
 
 .row-details-body__ratings .all-ratings {
-  min-height: 100px;
-  max-height: 320px;
-  overflow-y: auto;
   margin-bottom: 16px;
 }
 
