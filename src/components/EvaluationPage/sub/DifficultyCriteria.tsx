@@ -3,6 +3,7 @@ import LabeledRatings from "../../Elements/LabeledRatings";
 import icon_plane from "../../../../public/assets/common/icon-plane.svg";
 import icon_hear from "../../../../public/assets/common/icon-hear.svg";
 import icon_car from "../../../../public/assets/common/icon-car.svg";
+import { FormattedMessage, useIntl } from "react-intl";
 
 interface Props {
   planeNR: number;
@@ -21,32 +22,40 @@ const DifficultyCriteria: React.FC<Props> = ({
   setNeighborNR,
   setTrafficNR,
 }) => {
+
+  const intl = useIntl();
+
   // NR means Noise Rating
 
   const all_data = [
     {
       selectedCount: planeNR,
       setSelectedCount: setPlaneNR,
-      title: "Airplane Noise",
+      title: intl.formatMessage({ id: "difficulty.airplane", defaultMessage: "Airplane Noise" }),
       image: icon_plane,
     },
     {
       selectedCount: neighborNR,
       setSelectedCount: setNeighborNR,
-      title: "Noise from Neighbors",
+      title: intl.formatMessage({ id: "difficulty.neighbour",defaultMessage: "Noise from Neighbors" }),
       image: icon_hear,
     },
     {
       selectedCount: trafficNR,
       setSelectedCount: setTrafficNR,
-      title: "Traffic noise",
+      title: intl.formatMessage({ id: "difficulty.noise", defaultMessage: "Traffic noise" }),
       image: icon_car,
     },
   ];
 
   return (
     <div>
-      <h4>Then evaluate these criteria that make our lives more difficult.</h4>
+      <h4>
+        <FormattedMessage
+          defaultMessage="Then evaluate these criteria that make our lives more difficult."
+          id="difficulty.label"
+        />
+      </h4>
 
       {all_data.map((data, i) => {
         return (

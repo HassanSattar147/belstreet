@@ -3,6 +3,7 @@ import LabeledRatings from "../../Elements/LabeledRatings";
 import icon_tree from "../../../../public/assets/common/icon-tree.svg";
 import icon_bus from "../../../../public/assets/common/icon-bus.svg";
 import icon_cup from "../../../../public/assets/common/icon-cup.svg";
+import { FormattedMessage, useIntl } from "react-intl";
 
 interface Props {
   greenSpaceNR: number;
@@ -21,30 +22,35 @@ const HappinessCriteria: React.FC<Props> = ({
   setTransportNR,
   setCommercesNR,
 }) => {
+
+  const intl = useIntl();
+
   const all_data = [
     {
       selectedCount: greenSpaceNR,
       setSelectedCount: setGreenSpaceNR,
-      title: "Green spaces",
+      title: intl.formatMessage({ id: "happiness.green_spaces", defaultMessage: "Green spaces", }),
       image: icon_tree,
     },
     {
       selectedCount: transportNR,
       setSelectedCount: setTransportNR,
-      title: "Transport public",
+      title: intl.formatMessage({ id: "happiness.public_transport", defaultMessage:  "Transport public" }),
       image: icon_bus,
     },
     {
       selectedCount: commercesNR,
       setSelectedCount: setCommercesNR,
-      title: "Commerces",
+      title:intl.formatMessage({ id: "happiness.commerces", defaultMessage:  "Commerces" }),
       image: icon_cup,
     },
   ];
 
   return (
     <div>
-      <h4>Continue with the criteria that brings the neighborhood to life.</h4>
+      <h4>
+        <FormattedMessage id="form.happiness" defaultMessage="Continue with the criteria that brings the neighborhood to life." />
+      </h4>
 
       {all_data.map((data, i) => {
         return (

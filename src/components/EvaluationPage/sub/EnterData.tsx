@@ -3,6 +3,7 @@ import DropDownMenu, { LV } from "../../Elements/DropDownMenu";
 import Input from "../../Elements/Input";
 import { municipalityOptions } from "../../SearchPage";
 import StreetAutoSuggest from "./StreetAutoSuggest";
+import { FormattedMessage, useIntl } from "react-intl";
 
 interface Props {
   municipalityLV: LV | undefined;
@@ -25,11 +26,14 @@ const EnterData: FC<Props> = ({
   selectedStreet,
   setSelectedStreet,
 }) => {
+
+  const intl = useIntl();
+
   return (
     <div>
-      <h4>Start to enter your data</h4>
+      <h4><FormattedMessage id="form.label" defaultMessage="Start to enter your data" /></h4>
       <div className="enter-data-row">
-        <label className="enter-data-col-1">Municipality</label>
+        <label className="enter-data-col-1"><FormattedMessage id="form.commune" defaultMessage="Municipality" /></label>
         <div className="enter-data-col-2">
           <DropDownMenu
             options={municipalityOptions}
@@ -42,7 +46,7 @@ const EnterData: FC<Props> = ({
         </div>
       </div>
       <div className="enter-data-row">
-        <label className="enter-data-col-1">Street</label>
+        <label className="enter-data-col-1"><FormattedMessage id="form.rue" defaultMessage="Street" /></label>
         <div className="enter-data-col-2">
           <StreetAutoSuggest
             municipality={(municipalityLV?.value || "") as string}
@@ -54,9 +58,11 @@ const EnterData: FC<Props> = ({
         </div>
       </div>
       <div className="input_data">
-        <label className="input_label">Number (optional):</label>
+        <label className="input_label">
+        <FormattedMessage id="form.street_no" defaultMessage="Number (optional):" />
+        </label>
         <Input
-          placeholder="Choose Your Number (optional)"
+          placeholder={intl.formatMessage({ defaultMessage: "Choose Your Number (optional)", id: "form.number.placeholder" })}
           value={optionalNumber}
           valueSetter={setOptionalNumber}
         />

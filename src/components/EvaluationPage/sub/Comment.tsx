@@ -1,5 +1,6 @@
 import { FC } from "react";
 import Input from "../../Elements/Input";
+import { FormattedMessage, useIntl } from "react-intl";
 
 interface Props {
   optionalAlias: string;
@@ -14,11 +15,21 @@ const Comment: FC<Props> = ({
   optionalComments,
   setOptionalComments,
 }) => {
+
+  const intl = useIntl();
+
   return (
     <div className="data_entry">
-      <h4>A comment helps other users to know the street.</h4>
+      <h4>
+        <FormattedMessage
+         defaultMessage="A comment helps other users to know the street."
+         id="comment.label"
+        />
+      </h4>
       <div className="input_data">
-        <label className="input_label">Your alias (optional): </label>
+        <label className="input_label">
+          <FormattedMessage defaultMessage="Your alias (optional): " id="comment.alias" />
+        </label>
         <Input
           placeholder="Choose an alias (optional)"
           value={optionalAlias}
@@ -26,9 +37,11 @@ const Comment: FC<Props> = ({
         />
       </div>
       <div className="input_data">
-        <label className="input_label">Comments (optional): </label>
+        <label className="input_label">
+          <FormattedMessage defaultMessage={"Comments (optional): "} id="comment.message" />
+        </label>
         <Input
-          placeholder="Enter your comments (optional)"
+          placeholder={intl.formatMessage({ defaultMessage: "Enter your comments (optional)", id: "comment.message_placeholder"})}
           value={optionalComments}
           valueSetter={setOptionalComments}
         />
