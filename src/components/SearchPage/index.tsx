@@ -101,8 +101,6 @@ const index = () => {
       .catch((error) => console.log("error", error));
   };
 
-
-
   const fetchComments = async () => {
     const res = await fetch("http://localhost:3030/Modal_comments.php", {
       referrer: "https://www.belstreet.com/Recherche.html",
@@ -112,7 +110,7 @@ const index = () => {
       mode: "cors",
     });
     const data = await res.json();
-    console.log("{{{comments data}}}", data);
+    data;
   };
 
   useEffect(() => {

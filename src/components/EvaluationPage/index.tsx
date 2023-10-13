@@ -20,6 +20,7 @@ const PageTwo = () => {
   // Data states
   const [municipalityLV, setMunicipalityLV] = React.useState<LV>();
   const [street, setStreet] = React.useState("");
+  const [selectedStreet, setSelectedStreet] = React.useState("");
   const [optionalNumber, setOptionalNumber] = React.useState("");
   const [optionalAlias, setOptionalAlias] = React.useState("");
   const [optionalComments, setOptionalComments] = React.useState("");
@@ -43,7 +44,7 @@ const PageTwo = () => {
     const d = await request("/IP.php", {});
     setCantSubmit(!d.success);
     const isMunicipalitySelected = typeof municipalityLV !== "undefined";
-    const isStreetEntered = street.length > 0;
+    const isStreetEntered = selectedStreet.length > 0;
     const isPlaneNREntered = planeNR > 0;
     const isNeighborNREntered = neighborNR > 0;
     const isTrafficNREntered = trafficNR > 0;
@@ -91,6 +92,8 @@ const PageTwo = () => {
               setStreet={setStreet}
               optionalNumber={optionalNumber}
               setOptionalNumber={setOptionalNumber}
+              selectedStreet={selectedStreet}
+              setSelectedStreet={setSelectedStreet}
             />
             <DifficultyCriteria
               planeNR={planeNR}
