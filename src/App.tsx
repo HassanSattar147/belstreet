@@ -5,6 +5,7 @@ import SearchPage from "./components/SearchPage";
 import Homepage from "./components/Homepage";
 import { Routes, Route } from "react-router-dom";
 import Terms from "./components/Terms";
+import Privacy from "./components/Privacy";
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Route path="/search-page" element={<SearchPage />} />
       <Route path="/evaluation-page" element={<EvaluationPage />} />
       <Route path="/terms" element={<Terms />} />
+      <Route path="/privacy" element={<Privacy />} />
     </Routes>
   );
 }

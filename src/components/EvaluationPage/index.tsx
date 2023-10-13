@@ -177,8 +177,8 @@ const PageTwo = () => {
                   id="hp.tos"
                   defaultMessage="By clicking here, I accept the {terms} and {privacyPolicy}."
                   values={{
-                    terms: <a href="#">terms of use</a>,
-                    privacyPolicy: <a href="#">privacy policy</a>
+                    terms: <a href="/terms">terms of use</a>,
+                    privacyPolicy: <a href="/privacy">privacy policy</a>
                   }}
                 />
                 </p>
