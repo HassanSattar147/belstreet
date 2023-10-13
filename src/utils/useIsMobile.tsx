@@ -1,5 +1,5 @@
 import { useLayoutEffect, useState } from "react";
-import debounce from "lodash/debounce";
+import debounce from "./useDebounce";
 
 export const useIsBiggerScreen = () => {
   const [isBiggerScreen, setIsBiggerScreen] = useState(false);
