@@ -13,6 +13,7 @@ import Modal from "../Elements/Modal";
 import RowDetailsModal from "./RowDetailsModal";
 import EntriesTable from "./EntriesTable";
 import StreetAutoSuggest from "../EvaluationPage/sub/StreetAutoSuggest";
+import { api } from "../../utils/request";
 
 export const municipalityOptions = [
   { value: "1000", label: "1000 - Bruxelles" },
@@ -103,7 +104,7 @@ const index = () => {
   };
 
   const fetchComments = async () => {
-    const res = await fetch("http://localhost:3030/Modal_comments.php", {
+    const res = await fetch(api + "/Modal_comments.php", {
       referrer: "https://www.belstreet.com/Recherche.html",
       referrerPolicy: "strict-origin-when-cross-origin",
       body: "filter_Ruef=Rue+de+l'Industrie&Num=0&Count=3",
