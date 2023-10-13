@@ -4,12 +4,24 @@ import icon_plane from "../../../../public/assets/common/icon-plane.svg";
 import icon_hear from "../../../../public/assets/common/icon-hear.svg";
 import icon_car from "../../../../public/assets/common/icon-car.svg";
 
-const DifficultyCriteria = () => {
-  // NR means Noise Rating
+interface Props {
+  planeNR: number;
+  neighborNR: number;
+  trafficNR: number;
+  setPlaneNR: (x: number) => void;
+  setNeighborNR: (x: number) => void;
+  setTrafficNR: (x: number) => void;
+}
 
-  const [planeNR, setPlaneNR] = React.useState(0);
-  const [neighborNR, setNeighborNR] = React.useState(0);
-  const [trafficNR, setTrafficNR] = React.useState(0);
+const DifficultyCriteria: React.FC<Props> = ({
+  planeNR,
+  neighborNR,
+  trafficNR,
+  setPlaneNR,
+  setNeighborNR,
+  setTrafficNR,
+}) => {
+  // NR means Noise Rating
 
   const all_data = [
     {

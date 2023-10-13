@@ -196,6 +196,14 @@
     flex-direction: column;
     align-items: stretch !important;
   }
+  .enter-data-row {
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+  .enter-data-row .enter-data-col-1 {
+    width: 100%;
+    text-align: left;
+  }
   .input_label {
     width: 100%;
     align-items: flex-start !important;

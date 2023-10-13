@@ -10,10 +10,50 @@ import Modal from "../Elements/Modal";
 import attentionIcon from "../../../public/assets/common/attention-icon.svg";
 import successIcon from "../../../public/assets/common/success-icon.svg";
 import { Link } from "react-router-dom";
+import { LV } from "../Elements/DropDownMenu";
 
 const PageTwo = () => {
-  const [showAttentionModal, setShowAttentionModal] = React.useState(false);
+  // Modal states
+  const [showAttentionModal, setShowAttentionModal] = React.useState(true);
   const [showSuccessModal, setShowSuccessModal] = React.useState(false);
+
+  // Data states
+  const [street, setStreet] = React.useState("");
+  const [optionalNumber, setOptionalNumber] = React.useState("");
+  const [optionalAlias, setOptionalAlias] = React.useState("");
+  const [optionalComments, setOptionalComments] = React.useState("");
+
+  // NR means Noise Ratio
+  const [planeNR, setPlaneNR] = React.useState(0);
+  const [neighborNR, setNeighborNR] = React.useState(0);
+  const [trafficNR, setTrafficNR] = React.useState(0);
+  const [greenSpaceNR, setGreenSpaceNR] = React.useState(0);
+  const [transportNR, setTransportNR] = React.useState(0);
+  const [commercesNR, setCommercesNR] = React.useState(0);
+
+  const [municipalityLV, setMunicipalityLV] = React.useState<LV>();
+
+  const isSubmitable = () => {
+    const isMunicipalitySelected = typeof municipalityLV !== "undefined";
+    const isStreetEntered = street.length > 0;
+    const isPlaneNREntered = planeNR > 0;
+    const isNeighborNREntered = neighborNR > 0;
+    const isTrafficNREntered = trafficNR > 0;
+    const isGreenSpaceNR = greenSpaceNR > 0;
+    const isTransportNR = transportNR > 0;
+    const isCommercesNR = commercesNR > 0;
+
+    return (
+      isMunicipalitySelected &&
+      isStreetEntered &&
+      isPlaneNREntered &&
+      isNeighborNREntered &&
+      isTrafficNREntered &&
+      isGreenSpaceNR &&
+      isTransportNR &&
+      isCommercesNR
+    );
+  };
 
   return (
     <>
@@ -36,10 +76,36 @@ const PageTwo = () => {
           </div>
 
           <div className="page-two-content__body">
-            <EnterData />
-            <DifficultyCriteria />
-            <HappinessCriteria />
-            <Comment />
+            <EnterData
+              municipalityLV={municipalityLV}
+              setMunicipalityLV={setMunicipalityLV}
+              street={street}
+              setStreet={setStreet}
+              optionalNumber={optionalNumber}
+              setOptionalNumber={setOptionalNumber}
+            />
+            <DifficultyCriteria
+              planeNR={planeNR}
+              neighborNR={neighborNR}
+              trafficNR={trafficNR}
+              setPlaneNR={setPlaneNR}
+              setNeighborNR={setNeighborNR}
+              setTrafficNR={setTrafficNR}
+            />
+            <HappinessCriteria
+              greenSpaceNR={greenSpaceNR}
+              transportNR={transportNR}
+              commercesNR={commercesNR}
+              setGreenSpaceNR={setGreenSpaceNR}
+              setTransportNR={setTransportNR}
+              setCommercesNR={setCommercesNR}
+            />
+            <Comment
+              optionalAlias={optionalAlias}
+              setOptionalAlias={setOptionalAlias}
+              optionalComments={optionalComments}
+              setOptionalComments={setOptionalComments}
+            />
           </div>
 
           <div className="page-two-content__footer">
@@ -51,7 +117,16 @@ const PageTwo = () => {
                   and <a href="#">privacy policy</a>.
                 </p>
               </div>
-              <Button text="Send" variant="primary" onClick={() => {}} />
+              <Button
+                text="Send"
+                variant="primary"
+                onClick={() => {
+                  if (!isSubmitable()) {
+                    return alert("Please enter all the details. Thanks!");
+                  }
+                  setShowSuccessModal(true);
+                }}
+              />
             </div>
             <div className="button-back-to-home-container">
               <Link to={"/"}>
@@ -90,7 +165,7 @@ const PageTwo = () => {
                 : "Your review has been submitted, You can submit another review after 48 hours.  "}
             </p>
             <div className="review-modal__footer">
-              <Link to={"/evaluation-page"}>
+              <Link to={"/"}>
                 <Button
                   onClick={() => {}}
                   text="Back To Home"

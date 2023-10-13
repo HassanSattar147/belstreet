@@ -4,13 +4,23 @@ import icon_tree from "../../../../public/assets/common/icon-tree.svg";
 import icon_bus from "../../../../public/assets/common/icon-bus.svg";
 import icon_cup from "../../../../public/assets/common/icon-cup.svg";
 
-const HappinessCriteria = () => {
-  // NR means Noise Rating
+interface Props {
+  greenSpaceNR: number;
+  transportNR: number;
+  commercesNR: number;
+  setGreenSpaceNR: (x: number) => void;
+  setTransportNR: (x: number) => void;
+  setCommercesNR: (x: number) => void;
+}
 
-  const [greenSpaceNR, setGreenSpaceNR] = React.useState(0);
-  const [transportNR, setTransportNR] = React.useState(0);
-  const [commercesNR, setCommercesNR] = React.useState(0);
-
+const HappinessCriteria: React.FC<Props> = ({
+  greenSpaceNR,
+  transportNR,
+  commercesNR,
+  setGreenSpaceNR,
+  setTransportNR,
+  setCommercesNR,
+}) => {
   const all_data = [
     {
       selectedCount: greenSpaceNR,
