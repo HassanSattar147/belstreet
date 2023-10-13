@@ -268,3 +268,40 @@
     min-width: 80vw;
   }
 }
+
+.auto-fill {
+  width: 100%;
+  position: relative;
+}
+
+.auto-fill__dd {
+  background-color: #ffffff;
+  color: #fff;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  min-height: 100px;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.auto-fill__dd__item {
+  padding: 10px;
+  color: #888;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.auto-fill__dd__item:hover {
+  color: #000;
+  background-color: #8882;
+}
+
+.auto-fill__dd__item:not(:last-child) {
+  border-bottom: 0.5px solid rgba(128, 128, 128, 0.171);
+  padding-bottom: 5px;
+}

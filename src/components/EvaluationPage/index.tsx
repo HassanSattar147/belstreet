@@ -12,11 +12,6 @@ import successIcon from "../../../public/assets/common/success-icon.svg";
 import { Link } from "react-router-dom";
 import { LV } from "../Elements/DropDownMenu";
 import { request } from "../../utils/request";
-import useDebounce from "../../utils/useDebounce";
-
-interface AutofillSuggestion {
-  streetname_fr: string;
-}
 
 const PageTwo = () => {
   // Modal states
@@ -25,7 +20,6 @@ const PageTwo = () => {
   // Data states
   const [municipalityLV, setMunicipalityLV] = React.useState<LV>();
   const [street, setStreet] = React.useState("");
-  const debouncedStreet = useDebounce(street, 1000);
   const [optionalNumber, setOptionalNumber] = React.useState("");
   const [optionalAlias, setOptionalAlias] = React.useState("");
   const [optionalComments, setOptionalComments] = React.useState("");
@@ -41,48 +35,9 @@ const PageTwo = () => {
   // can submit
   const [cantSubmit, setCantSubmit] = React.useState(true);
 
-  // API call reponse
-  const [autofillRes, setAutofillRes] = React.useState<AutofillSuggestion[]>(
-    []
-  );
-
-  const fetchAutofillData = async (
-    municipalityValue: string,
-    streetStr: string
-  ) => {
-    const formData = new FormData();
-    formData.append("action", "submit");
-    formData.append(
-      "token",
-      "03AFcWeA4itAVmIMsZdzrU1Bk4Jd5fRcJk65yom3il939jzjP7NXr0x-t9Y7EezGtuUGZvk5cc7XGuRym18tF9HaB7TkqlcnG-CIt9HPpFIGZb0sckTj-BlQvWcerzgkPoeXPOlcGCv-6aVEtaEFcUtUcoBdZdIsnSqVmvAvKAqs0UzJoWI_uS0HH8Erp72xJ5pFDglGZPAmf8Imkn8u53AgTQYV56g47aTCpeQlVy_MqIH-TLFVROcmFihlocbAXPddbyqsd7gZp2BiqbweiD_7pnwgrmhaLch_shOUrVl7X7jT1kz3tZdseghEmH9tmco7pMzxKyH_V-d-sPX5AVqnG6TcFW0U1m7bZS_v0RmKh_fZfzEMXaGahdY0JsMSL2Abk0kqKEVLbMRdkEBYnQQBv4iiPGSDBi9kJPvjvSjXJhhUvV4VvcWDGUQPwCU0mbPWTXj-FwqxS62ga_BWHA0v0SJlrfVEcYv44GQJ70rInuKwdoLaZuvsfyiDCBtTcP7tfBEAXMGXW-lh1P1LW8K1mRLxDIjIKhu6-ZH2qtNGw3HeFFmC-JWyPUETHZkDXAs2rc29o3oJ1qM1jutQKtR-eWUTz6sbmrRaaNDt_shNvxaylSj6adkAA"
-    );
-    formData.append("commune", municipalityValue); //should change depending on the value selected by user. (Municiplity dropdown)
-    formData.append("rue", streetStr); // Search parameter
-    // You can add more form fields here as needed.
-
-    const res = await fetch("http://localhost:3030/Autofill.php", {
-      body: formData,
-      method: "POST",
-      mode: "cors",
-    });
-
-    const data = await res.json();
-
-    setAutofillRes(data);
-  };
-
   useEffect(() => {
     request("/IP.php", {}).then((d) => setCantSubmit(!d.success));
   }, []);
-
-  useEffect(() => {
-    if (!debouncedStreet) return;
-    fetchAutofillData((municipalityLV?.value || "") as string, debouncedStreet);
-  }, [debouncedStreet]);
-
-  useEffect(() => {
-    console.log("{{{autofillRes}}}", autofillRes);
-  }, [autofillRes]);
 
   const isSubmitable = async () => {
     const d = await request("/IP.php", {});
