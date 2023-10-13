@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import Nav from "../Nav";
 import "../../styles/pageThree.css";
-import Input from "../Elements/Input";
 import Button from "../Elements/Button";
 import Filter from "../../../public/assets/common/Filter.png";
 import Street from "../../../public/assets/common/Street.png";
@@ -13,6 +12,7 @@ import { Link } from "react-router-dom";
 import Modal from "../Elements/Modal";
 import RowDetailsModal from "./RowDetailsModal";
 import EntriesTable from "./EntriesTable";
+import StreetAutoSuggest from "../EvaluationPage/sub/StreetAutoSuggest";
 
 export const municipalityOptions = [
   { value: "1000", label: "1000 - Bruxelles" },
@@ -66,6 +66,7 @@ const index = () => {
   const [municipalityLV, setMunicipalityLV] = useState<LV>();
   const [selectedRowIndex, setSelectedRowIndex] = useState<number>();
   const [filterStreet, setFilterStreet] = useState("");
+  const [selectedfilterStreet, setSelectedFilterStreet] = useState("");
   const [pageNo, setPageNo] = useState(1);
 
   const handleCloseModal = () => {
@@ -206,10 +207,12 @@ const index = () => {
               </div>
               <div className="input_data-items">
                 <label className="input_label">Street: </label>
-                <Input
-                  placeholder="Choose Your Street"
-                  value={filterStreet}
-                  valueSetter={setFilterStreet}
+                <StreetAutoSuggest
+                  municipality={(municipalityLV?.value || "") as string}
+                  street={filterStreet}
+                  setStreet={setFilterStreet}
+                  selectedStreet={selectedfilterStreet}
+                  setSelectedStreet={setSelectedFilterStreet}
                 />
               </div>
               <Button
