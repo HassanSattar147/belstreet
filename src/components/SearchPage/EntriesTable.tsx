@@ -114,6 +114,7 @@ interface Props {
   totalRecods: number;
   pageNo: number;
   setPageNo: (x: number) => void;
+  onPaginationChange: (x: number) => void;
 }
 
 const EntriesTable: React.FC<Props> = ({
@@ -121,6 +122,7 @@ const EntriesTable: React.FC<Props> = ({
   totalRecods,
   pageNo,
   setPageNo,
+  onPaginationChange
 }) => {
   
   const dataToShow: DataType[] = React.useMemo(() => {
@@ -171,6 +173,7 @@ const EntriesTable: React.FC<Props> = ({
         onChange: (x) => {
           const currentPageNumber = x;
           setPageNo(currentPageNumber);
+          onPaginationChange(x);
         },
         hideOnSinglePage: true,
         defaultCurrent: pageNo,
