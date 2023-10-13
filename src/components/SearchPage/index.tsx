@@ -54,6 +54,17 @@ export type DataRow = [
   string
 ];
 
+/* 
+
+AV = plane
+vo = neighbor
+tf = traffic
+ve = green areas
+tr = transport
+co = commerce
+po = total
+
+*/
 export interface TableDataResponse {
   draw: number;
   recordsTotal: number;
@@ -97,27 +108,14 @@ const index = () => {
       body: params,
     };
 
-    fetch("http://192.168.18.5/belstreet/Fetch.php", requestOptions)
+    fetch(`${api}/Fetch.php`, requestOptions)
       .then((response) => response.json())
       .then((result) => setResponse(result as TableDataResponse))
       .catch((error) => console.log("error", error));
   };
 
-  const fetchComments = async () => {
-    const res = await fetch(api + "/Modal_comments.php", {
-      referrer: "https://www.belstreet.com/Recherche.html",
-      referrerPolicy: "strict-origin-when-cross-origin",
-      body: "filter_Ruef=Rue+de+l'Industrie&Num=0&Count=3",
-      method: "POST",
-      mode: "cors",
-    });
-    const data = await res.json();
-    data;
-  };
-
   useEffect(() => {
     fetchData("", "");
-    fetchComments();
   }, [pageNo, length]);
 
   useEffect(() => {
