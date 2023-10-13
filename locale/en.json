@@ -1,5 +1,6 @@
 {
   "UAJxeX": "Accept terms and services to fill the form",
+  "app.intro": "Belstreet evaluates the quality of life in all the {streets} of Brussels.",
   "comment.alias": "Your alias (optional):",
   "comment.label": "A comment helps other users to know the street.",
   "comment.message": "Comments (optional):",
@@ -9,6 +10,7 @@
   "difficulty.label": "Then evaluate these criteria that make our lives more difficult.",
   "difficulty.neighbour": "Noise from Neighbors",
   "difficulty.noise": "Traffic noise",
+  "evaluate.street": "Evaluate your street",
   "form.commune": "Municipality",
   "form.happiness": "Continue with the criteria that brings the neighborhood to life.",
   "form.label": "Start to enter your data",
@@ -22,5 +24,9 @@
   "hp.m2": "Follow the following steps to evaluate your street and number. No need to register and 100% anonymous.",
   "hp.m3": "Remember, you can always leave the “number” case blank. In this case, you are evaluating the street and not a particular number.",
   "hp.tos": "By clicking here, I accept the {terms} and {privacyPolicy}.",
+  "hpg.l1": "Are you moving and want to be 100% sure that there will be no surprises? A noisy or poorly communicated street?",
+  "hpg.l2": "BelStreet is at your side to help you make the right choice.",
+  "hpg.l3": "Evaluate your street with a few questions or consult our database to consult the evaluation of all the streets in Brussels!",
+  "search.database": "Search the database",
   "stars": "Stars"
 }
