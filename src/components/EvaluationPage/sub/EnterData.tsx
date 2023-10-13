@@ -1,6 +1,7 @@
 import { FC } from "react";
 import DropDownMenu, { LV } from "../../Elements/DropDownMenu";
 import Input from "../../Elements/Input";
+import { municipalityOptions } from "../../SearchPage";
 
 interface Props {
   municipalityLV: LV | undefined;
@@ -26,13 +27,7 @@ const EnterData: FC<Props> = ({
         <label className="enter-data-col-1">Municipality</label>
         <div className="enter-data-col-2">
           <DropDownMenu
-            options={[
-              { value: "id1", label: "Hello world" },
-              { value: "id2", label: "khello" },
-              { value: "id3", label: "world" },
-              { value: "id4", label: "world Khello" },
-              { value: "id5", label: "bye" },
-            ]}
+            options={municipalityOptions}
             selectedLV={municipalityLV}
             setSelectedLV={setMunicipalityLV}
           />

@@ -82,8 +82,12 @@ const DropDownMenu = ({
                   className="dropdown-menu-item"
                   onClick={() => {
                     setSelectedLV(option);
-                    setSearchStr("");
-                    handleCloseDD();
+                    setTimeout(() => {
+                      setSearchStr("");
+                    }, 100);
+                    setTimeout(() => {
+                      handleCloseDD();
+                    }, 100);
                   }}
                   style={{
                     backgroundColor: isSelected ? "#0003" : "",
