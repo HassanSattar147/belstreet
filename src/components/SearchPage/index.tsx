@@ -73,7 +73,7 @@ const index = () => {
   };
 
   const fetchData = (municipality: string, street: string, drawNo?: number) => {
-    const myHeaders = new Headers();
+    // const myHeaders = new Headers();
     const draw = typeof drawNo === "number" && drawNo > 0 ? drawNo : 1;
 
     const params = new URLSearchParams();
