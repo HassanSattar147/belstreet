@@ -1,6 +1,7 @@
 import React from "react";
 import Autofill from "../../Elements/Autofill";
 import useDebounce from "../../../utils/useDebounce";
+import { api } from "../../../utils/request";
 
 interface AutofillSuggestion {
   streetname_fr: string;
@@ -43,7 +44,7 @@ const StreetAutoSuggest: React.FC<Props> = ({
     formData.append("rue", streetStr); // Search parameter
     // You can add more form fields here as needed.
 
-    const res = await fetch("http://localhost:3030/Autofill.php", {
+    const res = await fetch(`${api}/Autofill.php`, {
       body: formData,
       method: "POST",
       mode: "cors",
