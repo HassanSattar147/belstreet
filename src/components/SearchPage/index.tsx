@@ -195,38 +195,36 @@ const index = () => {
               </p>
             </div>
           </div>
-          <div className="choosing-data">
-            <div className="choose-data">
-              <div className="input_data-items">
-                <label className="input_label">Municipality: </label>
-                <DropDownMenu
-                  options={municipalityOptions}
-                  selectedLV={municipalityLV}
-                  setSelectedLV={setMunicipalityLV}
-                />
-              </div>
-              <div className="input_data-items">
-                <label className="input_label">Street: </label>
-                <StreetAutoSuggest
-                  municipality={(municipalityLV?.value || "") as string}
-                  street={filterStreet}
-                  setStreet={setFilterStreet}
-                  selectedStreet={selectedfilterStreet}
-                  setSelectedStreet={setSelectedFilterStreet}
-                />
-              </div>
-              <Button
-                onClick={() => {
-                  const municipality =
-                    (municipalityLV?.label as string | undefined) || "";
-                  const street = filterStreet;
-                  fetchData(municipality, street);
-                }}
-                text="Filter"
-                variant="primary"
-                className="filter-btn"
+          <div className="filters-container">
+            <div className="filters-container__item">
+              <label className="input_label">Municipality: </label>
+              <DropDownMenu
+                options={municipalityOptions}
+                selectedLV={municipalityLV}
+                setSelectedLV={setMunicipalityLV}
               />
             </div>
+            <div className="filters-container__item">
+              <label className="input_label">Street: </label>
+              <StreetAutoSuggest
+                municipality={(municipalityLV?.value || "") as string}
+                street={filterStreet}
+                setStreet={setFilterStreet}
+                selectedStreet={selectedfilterStreet}
+                setSelectedStreet={setSelectedFilterStreet}
+              />
+            </div>
+            <Button
+              onClick={() => {
+                const municipality =
+                  (municipalityLV?.label as string | undefined) || "";
+                const street = filterStreet;
+                fetchData(municipality, street);
+              }}
+              text="Filter"
+              variant="primary"
+              className="filter-btn"
+            />
           </div>
         </div>
         <div className="page-three-database">
