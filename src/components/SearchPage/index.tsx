@@ -82,9 +82,20 @@ const index = () => {
   const [selectedfilterStreet, setSelectedFilterStreet] = useState("");
   const [pageNo, setPageNo] = useState(1);
 
+  const [order, setOrder] = useState<{ orderBy: number, dir: string }>();
+
   const handleCloseModal = () => {
     setSelectedRowIndex(undefined);
   };
+
+  const handleOrderChange = (colIndex: number) => {
+    if (order?.orderBy === colIndex) {
+      return setOrder({ ...order, dir: order?.dir === "asc" ? "desc" : "asc" })
+    }
+    else {
+      return setOrder({ orderBy: colIndex, dir: "asc" });
+    }
+  }
 
   const fetchData = (municipality: string, street: string, drawNo?: number) => {
     // const myHeaders = new Headers();
@@ -100,6 +111,10 @@ const index = () => {
     params.append("search[regex]", false + "");
     params.append("filter_Commune", municipality);
     params.append("filter_Rue", street);
+    if (order) {
+      params.append("order[0][column]", order.orderBy + "");
+      params.append("order[0][dir]", order.dir);
+    }
 
     const requestOptions = {
       method: "POST",
@@ -117,7 +132,7 @@ const index = () => {
 
   useEffect(() => {
     fetchData("", "");
-  }, [pageNo, length]);
+  }, [pageNo, length, order]);
 
   useEffect(() => {
     const handleViewDetails = (e: Event) => {
@@ -239,6 +254,7 @@ const index = () => {
               const street = filterStreet;
               fetchData(municipality, street, newPageNo);
             }}
+            onOrder={handleOrderChange}
           />
         </div>
         <div className="back-btn">
