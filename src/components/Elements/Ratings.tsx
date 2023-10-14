@@ -31,7 +31,7 @@ const Ratings: React.FC<RatingsProps> = ({
           );
         })}
       </div>
-      <div className="ratings-count">{selectedCount} <FormattedMessage id="stars" defaultMessage="Stars" /></div>
+      <div className="ratings-count">{selectedCount.toFixed(2)} <FormattedMessage id="stars" defaultMessage="Stars" /></div>
     </div>
   );
 };
