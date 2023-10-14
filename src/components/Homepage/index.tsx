@@ -6,6 +6,7 @@ import searchPageIcon from "../../../public/assets/common/search-page-icon.svg";
 import evaluatePageIcon from "../../../public/assets/common/evaluate-page-icon.svg";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
+import Footer from "../Elements/Footer";
 
 const Homepage = () => {
   return (
@@ -64,6 +65,8 @@ const Homepage = () => {
           </Link>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };

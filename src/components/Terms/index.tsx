@@ -1,3 +1,4 @@
+import Footer from "../Elements/Footer";
 import Nav from "../Nav";
 
 function Terms () {
@@ -74,6 +75,7 @@ function Terms () {
         <br/>
             </div>
             </div>
+            <Footer />
         </div>
     )
 

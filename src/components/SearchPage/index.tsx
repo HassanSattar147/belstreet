@@ -14,6 +14,7 @@ import RowDetailsModal from "./RowDetailsModal";
 import EntriesTable from "./EntriesTable";
 import StreetAutoSuggest from "../EvaluationPage/sub/StreetAutoSuggest";
 import { api } from "../../utils/request";
+import Footer from "../Elements/Footer";
 
 export const municipalityOptions = [
   { value: "1000", label: "1000 - Bruxelles" },
@@ -249,6 +250,7 @@ const index = () => {
             />
           </Link>
         </div>
+        <Footer />
       </div>
       <Modal
         isOpen={typeof selectedRowIndex === "number"}

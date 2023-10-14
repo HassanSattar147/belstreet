@@ -1,3 +1,4 @@
+import Footer from "../Elements/Footer";
 import Nav from "../Nav";
 
 function Privacy () {
@@ -194,6 +195,8 @@ function Privacy () {
                 <a href="/"><button className="PaginaInicio">Retour vers le site principal</button></a>
             </div>
             </div>
+
+            <Footer />
         </div>
     )
 
