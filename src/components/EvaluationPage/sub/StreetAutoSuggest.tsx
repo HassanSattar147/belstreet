@@ -2,6 +2,7 @@ import React from "react";
 import Autofill from "../../Elements/Autofill";
 import useDebounce from "../../../utils/useDebounce";
 import { api } from "../../../utils/request";
+import { useIntl } from "react-intl";
 
 interface AutofillSuggestion {
   streetname_fr: string;
@@ -20,6 +21,7 @@ const StreetAutoSuggest: React.FC<Props> = ({
   street,
   setStreet,
 }) => {
+  const intl = useIntl();
   const debouncedStreet = useDebounce(street, 500);
 
   // API call reponse
@@ -63,7 +65,7 @@ const StreetAutoSuggest: React.FC<Props> = ({
   return (
     <Autofill
       inputProps={{
-        placeholder: "Choose Your Street",
+        placeholder: intl.formatMessage({ defaultMessage: "Choose Your Street", id: "choose_your_street" }),
         value: street,
         valueSetter: setStreet,
       }}

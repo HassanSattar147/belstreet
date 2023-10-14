@@ -1,12 +1,15 @@
+import { Link } from "react-router-dom";
 import Button from "../Elements/Button";
 import Footer from "../Elements/Footer";
 import Input from "../Elements/Input";
 import Nav from "../Nav";
 import { FormattedMessage, useIntl } from "react-intl";
+import useIsMobile from "../../utils/useIsMobile";
 
 function Contact() {
 
     const intl = useIntl();
+    const isMobile = useIsMobile();
 
   return (
     <div style={{ background: "rgb(248, 248, 248)" }}>
@@ -84,7 +87,16 @@ function Contact() {
                     text={intl.formatMessage({ defaultMessage: "Send", id: "contact.send" })}
                     variant={"primary"}
                     onClick={() => ""}
+                    style={{ float: isMobile ? undefined : "right" }}
                 />
+                <Link to={"/"}>
+            <Button
+              onClick={() => {}}
+              text="Back To Home"
+              variant="secondary"
+              style={isMobile ? { marginTop: 8 } : { marginLeft: 8 }}
+            />
+          </Link>
             </div>
             </form>
         </div>

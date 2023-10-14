@@ -49,7 +49,7 @@ const PageTwo = () => {
   const isSubmitable = async () => {
     if (!acceptTerms) {
       toast.error(
-        intl.formatMessage({ defaultMessage: "Accept terms and services to fill the form" })
+        intl.formatMessage({ defaultMessage: "Accept terms and services to fill the form", id: "accept_terms" })
       );
       return false;
     }
@@ -240,14 +240,16 @@ const PageTwo = () => {
             <h3>{cantSubmit ? "Attention" : "Thank You!"}</h3>
             <p>
               {cantSubmit
-                ? "You have already submitted a Review. You can submit another review after 48 Hours."
-                : "Your review has been submitted, You can submit another review after 48 hours.  "}
+                ? 
+                intl.formatMessage({ id: "error.already_sumbitted", defaultMessage: "You have already submitted a Review. You can submit another review after 48 Hours." }) :
+                intl.formatMessage({ id: "success.form", defaultMessage: "Your review has been submitted, You can submit another review after 48 hours.  " })
+              }
             </p>
             <div className="review-modal__footer">
               <Link to={"/"}>
                 <Button
                   onClick={() => {}}
-                  text="Back To Home"
+                  text={ intl.formatMessage({ defaultMessage: "Back To Home", id: "form.backtohome" })}
                   variant="secondary"
                   style={{ backgroundColor: "#fff" }}
                 />
@@ -258,7 +260,7 @@ const PageTwo = () => {
                     setCantSubmit(false);
                     setShowSuccessModal(false);
                   }}
-                  text="Back To Review"
+                  text={ intl.formatMessage({ defaultMessage: "Back To Review", id: "form.backtoreview" })}
                   variant="primary"
                 />
               )}
