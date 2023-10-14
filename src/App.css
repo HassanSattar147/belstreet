@@ -13,10 +13,41 @@
 }
 
 .footer__links {
-    float: right;
-    display: flex;
     gap: 12px;
     color: #333;
     text-decoration: none;
     font-size: 14px;
+}
+
+@media screen and (min-width: 600px) {
+    .footer__links {
+        float: right;
+        display: flex;
+        gap: 12px;
+        color: #333;
+        text-decoration: none;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .footer {
+        display: block;
+        padding-left: 20px;
+        padding-right: 20px;
+        height: 170px;
+    }
+    .footer__links {
+        float: left;
+        display: block;
+    }
+    .footer__links p {
+        float: left;
+        display: block;
+    }
+    .footer-link {
+        width: 100%;
+        margin: 8px 0px;
+        display: block !important;
+    }
 }

@@ -65,8 +65,9 @@ const Homepage = () => {
           </Link>
         </div>
       </div>
-
+      <div style={{ marginTop: 44, }}>
       <Footer />
+      </div>
     </div>
   );
 };

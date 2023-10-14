@@ -9,22 +9,28 @@ function Footer () {
             </span>
             <span className="footer__links">
                 <a href="">
+                    <p className="footer-link">
                     <FormattedMessage 
                         defaultMessage="Sur nous/Contact"
                         id="footer.contact"
                     />
+                    </p>
                 </a>
                 <a href="/terms">
+                    <p className="footer-link">
                     <FormattedMessage 
                         defaultMessage="Conditions d'utilisation"
                         id="footer.conditions"
                     />
+                    </p>
                 </a>
-                <a href="">
+                <a href="/privacy">
+                    <p className="footer-link">
                     <FormattedMessage 
                         defaultMessage="Vie privée"
                         id="footer.privacy"
                     />
+                    </p>
                 </a>
             </span>
         </div>
