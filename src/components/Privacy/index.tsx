@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import Footer from "../Elements/Footer";
 import Nav from "../Nav";
+import Button from "../Elements/Button";
 
 function Privacy () {
 
@@ -192,11 +194,13 @@ function Privacy () {
                 </div>
         <br />
         <br />
-                <a href="/"><button className="PaginaInicio">Retour vers le site principal</button></a>
+                <a href="/"><button style={{ width: 300 }}className="PaginaInicio primary filter-btn">Retour vers le site principal</button></a>
+                
             </div>
             </div>
-
+            <div style={{ marginTop: 44 }}>
             <Footer />
+            </div>
         </div>
     )
 

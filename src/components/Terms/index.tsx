@@ -33,7 +33,7 @@ function Terms () {
                     <h4> Article 3 : Traitement de données</h4>
 
                     <p> BelStreet collecte des données personnelles lors de l'envoi de formulaires. 
-                        Veuillez vous adresser vers la partie <a href="Legal.html"> vie privée</a> pour avoir plus d'infos.
+                        Veuillez vous adresser vers la partie <a href="/privacy"> vie privée</a> pour avoir plus d'infos.
                     </p>
 
                     <h4> Article 4 : Les droits et obligations de l'éditeur en matière de propriété intellectuelle </h4>
@@ -73,9 +73,13 @@ function Terms () {
                 </div>
         <br/>
         <br/>
+                <a href="/"><button style={{ width: 300 }}className="PaginaInicio primary filter-btn">Retour vers le site principal</button></a>
+                
             </div>
             </div>
+            <div className="mt-44">
             <Footer />
+            </div>
         </div>
     )
 
