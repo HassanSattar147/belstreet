@@ -9,6 +9,9 @@ export interface InputProps {
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
   value?: string;
   valueSetter?: (x: string) => void;
+  name?: string
+  type?: string
+  required?: boolean;
 }
 
 const Input = ({
@@ -19,15 +22,20 @@ const Input = ({
   onBlur,
   value,
   valueSetter,
+  name,
+  type,
+  required,
 }: InputProps) => {
   const commonProps = {
-    type: "text",
     className: "input",
     placeholder,
     defaultValue,
     style,
     onFocus,
     onBlur,
+    name,
+    required,
+    type: type || "text"
   };
 
   return typeof value === "string" && typeof valueSetter !== "undefined" ? (

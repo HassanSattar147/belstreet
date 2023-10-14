@@ -6,6 +6,7 @@ import Homepage from "./components/Homepage";
 import { Routes, Route } from "react-router-dom";
 import Terms from "./components/Terms";
 import Privacy from "./components/Privacy";
+import Contact from "./components/Contact";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Route path="/evaluation-page" element={<EvaluationPage />} />
       <Route path="/terms" element={<Terms />} />
       <Route path="/privacy" element={<Privacy />} />
+      <Route path="/contact" element={<Contact />} />
     </Routes>
   );
 }

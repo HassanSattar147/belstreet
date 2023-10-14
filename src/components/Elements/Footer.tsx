@@ -8,7 +8,7 @@ function Footer () {
                 © Alejandro Rubio 2022
             </span>
             <span className="footer__links">
-                <a href="">
+                <a href="/contact">
                     <p className="footer-link">
                     <FormattedMessage 
                         defaultMessage="Sur nous/Contact"
