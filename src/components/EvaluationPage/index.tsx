@@ -59,7 +59,7 @@ const PageTwo = () => {
     }
 
     const isMunicipalitySelected = typeof municipalityLV !== "undefined";
-    const isStreetEntered = selectedStreet.length > 0;
+    const isStreetEntered = true || selectedStreet.length > 0;
     const isPlaneNREntered = planeNR > 0;
     const isNeighborNREntered = neighborNR > 0;
     const isTrafficNREntered = trafficNR > 0;
