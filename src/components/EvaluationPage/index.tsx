@@ -66,7 +66,7 @@ const PageTwo = () => {
     const isGreenSpaceNR = greenSpaceNR > 0;
     const isTransportNR = transportNR > 0;
     const isCommercesNR = commercesNR > 0;
-
+    return true;
     return (
       isMunicipalitySelected &&
       isStreetEntered &&
