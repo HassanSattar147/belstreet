@@ -14,6 +14,7 @@ import { LV } from "../Elements/DropDownMenu";
 import { api, request } from "../../utils/request";
 import toast from "react-hot-toast";
 import { FormattedMessage, useIntl } from "react-intl";
+import Footer from "../Elements/Footer";
 
 const PageTwo = () => {
   // Modal states
@@ -205,6 +206,9 @@ const PageTwo = () => {
               </Link>
             </div>
           </div>
+        </div>
+        <div style={{ marginTop: 44, }}>
+        <Footer />
         </div>
       </div>
       <Modal
