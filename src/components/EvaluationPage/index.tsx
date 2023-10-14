@@ -119,6 +119,9 @@ const PageTwo = () => {
     if (response.message === "Formulaire enregistré correctement.") {
       setShowSuccessModal(true);
     }
+    else if (response.message === "Attention! Cette rue et numéro ne correspondent pas.") {
+      toast.error(intl.formatMessage({ defaultMessage: "Attention! This street and number do not match.", id: "error.street_no" }))
+    }
   }
 
   return (
