@@ -96,7 +96,7 @@ const PageTwo = () => {
     formData.append("message", optionalComments);
     formData.append("termes", '1');
 
-    const request = await fetch(api + "/index.php", {
+    const request = await fetch(api + "/Index.php", {
       method: "POST",
       headers: {
       //  "Content-Type": "application/",
