@@ -228,7 +228,7 @@ const PageTwo = () => {
                 onClick={async () => {
                   const canSubmit = await isSubmitable();
                   if (!canSubmit) {
-                    return toast.error("Required fields are not filled");
+                    return;
                   }
                   handleSubmit();
                 }}
