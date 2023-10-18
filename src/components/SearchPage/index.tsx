@@ -74,6 +74,8 @@ export interface TableDataResponse {
   data: DataRow[];
 }
 
+export type SortOrder = { orderBy: number, dir: string };
+
 const index = () => {
   const length = 10;
   const [response, setResponse] = useState<TableDataResponse>();
@@ -84,7 +86,7 @@ const index = () => {
   const [pageNo, setPageNo] = useState(1);
   const intl = useIntl();
 
-  const [order, setOrder] = useState<{ orderBy: number, dir: string }>();
+  const [order, setOrder] = useState<SortOrder>();
 
   const handleCloseModal = () => {
     setSelectedRowIndex(undefined);
@@ -283,6 +285,7 @@ const index = () => {
               fetchData(municipality, street, newPageNo);
             }}
             onOrder={handleOrderChange}
+            order={order}
           />
         </div>
         <div className="back-btn">

@@ -9,6 +9,15 @@ h4 {
     margin-top: 24px;
 }
 
+.grid {
+    display: grid;
+    gap: 4px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
 .footer {
     width: 100%;
     padding: 12px;
