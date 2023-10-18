@@ -51,7 +51,9 @@ const DropDownMenu = ({
           paddingRight: "40px",
         }}
         onFocus={() => setIsDDActive(true)}
-        onBlur={handleCloseDD}
+        onBlur={() => {
+          setTimeout(handleCloseDD, 100);
+        }}
         value={searchStr}
         valueSetter={setSearchStr}
       />
