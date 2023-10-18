@@ -5,6 +5,7 @@
   "app.intro": "Belstreet évalue la qualité de vie dans toutes les <streets> rues de Bruxelles</streets>.",
   "back.to.home": "Retour à l'accueil",
   "choose.your.street": "Choisissez votre rue",
+  "choose.an.alias": "Choisissez un alias (facultatif)",
   "choose_your_street": "Choisissez votre rue",
   "comment.alias": "Votre alias (facultatif) :",
   "comment.label": "Un commentaire aide les autres utilisateurs à connaître la rue.",
@@ -89,5 +90,6 @@
   "table.viewdetails": "Voir les détails",
   "table.zip": "Code postal",
   "totalvotes.d": "Votes totaux",
-  "traffic.noise.d": "Bruit de la circulation"
+  "traffic.noise.d": "Bruit de la circulation",
+  "no.of.votes": "Nombre de Votes"
 }

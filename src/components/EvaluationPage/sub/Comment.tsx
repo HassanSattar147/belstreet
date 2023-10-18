@@ -31,7 +31,7 @@ const Comment: FC<Props> = ({
           <FormattedMessage defaultMessage="Your alias (optional): " id="comment.alias" />
         </label>
         <Input
-          placeholder="Choose an alias (optional)"
+          placeholder={intl.formatMessage({ defaultMessage: "Choose an alias (optional)", id: "choose.an.alias" })}
           value={optionalAlias}
           valueSetter={setOptionalAlias}
         />

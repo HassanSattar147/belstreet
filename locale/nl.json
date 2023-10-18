@@ -4,6 +4,7 @@
     "airplane.noise.d": "Vliegtuiggeluid",
     "app.intro": "Belstreet evalueert de levenskwaliteit in alle <streets>straten van Brussel</streets>.",
     "back.to.home": "Terug naar Huis",
+    "choose.an.alias": "Kies een alias (optioneel)",
     "choose.your.street": "Kies uw Straat",
     "choose_your_street": "Kies uw Straat",
     "comment.alias": "Uw alias (optioneel):",
@@ -89,5 +90,6 @@
     "table.viewdetails": "Bekijk Details",
     "table.zip": "Postcode",
     "totalvotes.d": "Totaal aantal stemmen",
-    "traffic.noise.d": "Verkeerslawaai"
+    "traffic.noise.d": "Verkeerslawaai",
+    "no.of.votes": "Aantal Stemmen"
   }
