@@ -3,6 +3,7 @@ import { Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { DataRow } from ".";
 import useIsMobile from "../../utils/useIsMobile";
+import { FormattedMessage } from "react-intl";
 
 interface DataType {
   key: React.Key;
@@ -39,65 +40,77 @@ const EntriesTable: React.FC<Props> = ({
 
   const columns: ColumnsType<DataType> = [
     {
-      title: <span onClick={() => onOrder(0)}>ZIP Code</span>,
+      title: <span onClick={() => onOrder(0)}>
+        <FormattedMessage id="table.zip" defaultMessage="ZIP Code" />
+      </span>,
       width: 100,
       dataIndex: "zipCode",
       key: "zipCode",
       fixed: "left",
     },
     {
-      title: <span onClick={() => onOrder(1)}>Street</span>,
+      title: <span onClick={() => onOrder(1)}>
+        <FormattedMessage id="table.street" defaultMessage="Street" /></span>,
       width: 150,
       dataIndex: "street",
       key: "street",
       fixed: "left",
     },
     {
-      title: <span onClick={() => onOrder(2)}>Number</span>,
+      title: <span onClick={() => onOrder(2)}>
+        <FormattedMessage id="table.number" defaultMessage="Number" /></span>,
       dataIndex: "number",
       key: "number",
       width: 100,
       fixed: "left",
     },
     {
-      title: <span onClick={() => onOrder(3)}>Airplanes Noise</span>,
+      title: <span onClick={() => onOrder(3)}>
+        <FormattedMessage id="table.airplanenoise" defaultMessage="Airplanes Noise" /></span>,
       dataIndex: "airplanesNoise",
       key: "1",
       width: 150,
     },
     {
-      title: <span onClick={() => onOrder(4)}>Neighbors Noise</span>,
+      title: <span onClick={() => onOrder(4)}>
+        <FormattedMessage id="table.noiseneighboir" defaultMessage="Neighbors Noise" /></span>,
       dataIndex: "neighborsNoise",
       key: "2",
       width: 150,
     },
     {
-      title: <span onClick={() => onOrder(5)}>Traffic Noise</span>,
+      title: <span onClick={() => onOrder(5)}>
+        <FormattedMessage id="table.trafficnoise" defaultMessage="Traffic Noise" /></span>,
       dataIndex: "trafficNoise",
       key: "3",
       width: 150,
     },
     {
-      title: <span onClick={() => onOrder(6)}>Green Spaces</span>,
+      title: <span onClick={() => onOrder(6)}>
+        <FormattedMessage id="table.greenspaces" defaultMessage="Green Spaces" /></span>,
       dataIndex: "greenSpaces",
       key: "4",
       width: 150,
     },
     {
-      title: <span onClick={() => onOrder(7)}>Transportation</span>,
+      title: <span onClick={() => onOrder(7)}>
+        <FormattedMessage id="table.transportation" defaultMessage="Transportation" /></span>,
       dataIndex: "transportation",
       key: "5",
       width: 150,
     },
     {
-      title: <span onClick={() => onOrder(8)}>Shops</span>,
+      title: <span onClick={() => onOrder(8)}>
+        <FormattedMessage id="table.shops" defaultMessage="Shops" /></span>,
       dataIndex: "shops",
       key: "6",
       width: 150,
     },
-    { title: <span onClick={() => onOrder(8)}>Assessment</span>, dataIndex: "assessment", key: "7", width: 150 },
+    { title: <span onClick={() => onOrder(8)}>
+      <FormattedMessage id="table.assement" defaultMessage="Assessment" /></span>, dataIndex: "assessment", key: "7", width: 150 },
     {
-      title: <span onClick={() => onOrder(10)}>Number Of Votes</span>,
+      title: <span onClick={() => onOrder(10)}>
+        <FormattedMessage id="" defaultMessage="Number Of Votes" /></span>,
       dataIndex: "numberOfVotes",
       key: "8",
       width: 150,
@@ -122,7 +135,7 @@ const EntriesTable: React.FC<Props> = ({
             color: "#000",
           }}
         >
-          View Details
+          <FormattedMessage defaultMessage="View Details" id="table.viewdetails" />
         </a>
       ),
     },
@@ -210,7 +223,7 @@ const EntriesTable: React.FC<Props> = ({
             color: "#000",
           }}
         >
-          View Details
+          <FormattedMessage defaultMessage="View Details" id="table.viewdetails" />
         </a>
       ),
     },

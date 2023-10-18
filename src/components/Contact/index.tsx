@@ -92,7 +92,7 @@ function Contact() {
                 <Link to={"/"}>
             <Button
               onClick={() => {}}
-              text="Back To Home"
+              text={intl.formatMessage({ defaultMessage: "Back To Home", id: "back.to.home" })}
               variant="secondary"
               style={isMobile ? { marginTop: 8 } : { marginLeft: 8 }}
             />

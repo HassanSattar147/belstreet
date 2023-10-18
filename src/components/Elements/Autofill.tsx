@@ -2,6 +2,7 @@ import React from "react";
 import Input from "./Input";
 import { InputProps } from "./Input";
 import useClickOutside from "./useClickOutside";
+import { useIntl } from "react-intl";
 
 interface Props {
   inputProps: InputProps;
@@ -18,6 +19,7 @@ const Autofill: React.FC<Props> = ({
   selected,
   setSelected,
 }) => {
+  const intl = useIntl();
   const [isExpanded, setIsExpanded] = React.useState(!false);
   const handleCloseDD = () => {
     setIsExpanded(false);
@@ -37,7 +39,10 @@ const Autofill: React.FC<Props> = ({
     <div ref={autoFillRef} className={"auto-fill " + (containerClass || "")}>
       <Input
         {...inputProps}
-        placeholder={selected ? "Choose Your Street" : "Choose Your Street"}
+        placeholder={selected ? 
+          intl.formatMessage({ defaultMessage: "Choose Your Street", id: "choose.your.street" }) : 
+          intl.formatMessage({ defaultMessage: "Choose Your Street", id: "choose.your.street" })
+        }
         onFocus={() => {
           if (shouldDDExpand) setIsExpanded(true);
         }}

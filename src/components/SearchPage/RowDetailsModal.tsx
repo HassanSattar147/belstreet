@@ -10,6 +10,7 @@ import Button from "../Elements/Button";
 import { DataRow } from ".";
 import { api } from "../../utils/request";
 import moment from "moment";
+import { FormattedMessage, useIntl } from "react-intl";
 
 interface Comment {
   "0": string;
@@ -98,11 +99,12 @@ const data = await res.json();
   const totalAvgRating = convert100to5(commentsResponse?.AVGPO || 0);
   const pieChartDeg = (totalAvgRating / MAX_RATING) * 360;
 
-  if (isLoading) return <>Loading...</>;
+  if (isLoading) return <><FormattedMessage defaultMessage="Loading..." id="loading..." /></>;
 
-  if (!commentsResponse) return <>No data to show...</>;
+  if (!commentsResponse) return <><FormattedMessage defaultMessage="No data to show..." id="no_data" /></>;
 
   const isSingularVote = dataRow[10] == "1";
+  const intl = useIntl();
 
   return (
     <div className="row-details-modal-wrapper">
@@ -126,37 +128,37 @@ const data = await res.json();
               {
                 selectedCount: convert100to5(commentsResponse.AVGAV),
                 setSelectedCount: emptyFunc,
-                title: "Airplane Noise",
+                title: intl.formatMessage({ id: "airplane.noise.d", defaultMessage: "Airplane Noise" }),
                 image: icon_plane,
               },
               {
                 selectedCount: convert100to5(commentsResponse.AVGVO),
                 setSelectedCount: emptyFunc,
-                title: "Noise from Neighbors",
+                title: intl.formatMessage({ id: "neighbour.noise.d", defaultMessage: "Noise from Neighbors" }),
                 image: icon_hear,
               },
               {
                 selectedCount: convert100to5(commentsResponse.AVGTF),
                 setSelectedCount: emptyFunc,
-                title: "Traffic noise",
+                title: intl.formatMessage({ id: "traffic.noise.d", defaultMessage: "Traffic Noice" }),
                 image: icon_car,
               },
               {
                 selectedCount: convert100to5(commentsResponse.AVGVE),
                 setSelectedCount: emptyFunc,
-                title: "Green spaces",
+                title: intl.formatMessage({ id: "greenspaces.d", defaultMessage: "Green spaces" }),
                 image: icon_tree,
               },
               {
                 selectedCount: convert100to5(commentsResponse.AVGTR),
                 setSelectedCount: emptyFunc,
-                title: "Transport public",
+                title: intl.formatMessage({ id: "publictransport.d", defaultMessage: "Public Transport" }),
                 image: icon_bus,
               },
               {
                 selectedCount: convert100to5(commentsResponse.AVGCO),
                 setSelectedCount: emptyFunc,
-                title: "Commerces",
+                title: intl.formatMessage({ id: "Commerces.d", defaultMessage: "Commerces" }),
                 image: icon_cup,
               },
             ].map((data, i) => {
@@ -168,7 +170,9 @@ const data = await res.json();
             })}
           </div>
           <div className="all-ratings__counter">
-            <div>Total Votes</div>
+            <div>
+              <FormattedMessage defaultMessage="Total Votes" id="totalvotes.d" />
+            </div>
             <span>
               {dataRow[10]} {isSingularVote ? "Vote" : "Votes"}
             </span>
@@ -177,7 +181,9 @@ const data = await res.json();
       </div>
 
       <div className="row-details-comments">
-        <div className="row-details-comments__heading">Comments</div>
+        <div className="row-details-comments__heading">
+          <FormattedMessage defaultMessage="Comments" id="comments.d" />
+        </div>
         {commentsResponse.Comments.map((comment) => {
           return (
             <div className="row-details-comments__body">

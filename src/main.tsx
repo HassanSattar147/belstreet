@@ -7,15 +7,17 @@ import { Toaster } from "react-hot-toast";
 import { IntlProvider } from 'react-intl';
 import en from "../locale/en.json";
 import fr from "../locale/fr.json";
+import nl from "../locale/nl.json";
 import Cookies from "js-cookie";
 
 const messages = {
   en,
-  fr
+  fr,
+  nl
 }
 
-const locale = Cookies.get("locale") as "en" || "fr";
-const selectedMessages = messages[locale];
+const locale = Cookies.get("locale") as "nl" || "fr";
+const selectedMessages = messages[locale || "nl"];
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

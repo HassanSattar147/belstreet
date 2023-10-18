@@ -15,6 +15,7 @@ import EntriesTable from "./EntriesTable";
 import StreetAutoSuggest from "../EvaluationPage/sub/StreetAutoSuggest";
 import { api } from "../../utils/request";
 import Footer from "../Elements/Footer";
+import { FormattedMessage, useIntl } from "react-intl";
 
 export const municipalityOptions = [
   { value: "1000", label: "1000 - Bruxelles" },
@@ -81,6 +82,7 @@ const index = () => {
   const [filterStreet, setFilterStreet] = useState("");
   const [selectedfilterStreet, setSelectedFilterStreet] = useState("");
   const [pageNo, setPageNo] = useState(1);
+  const intl = useIntl();
 
   const [order, setOrder] = useState<{ orderBy: number, dir: string }>();
 
@@ -163,14 +165,23 @@ const index = () => {
         <div className="page-three-content">
           <div className="page-three-content__header">
             <h2 className="color-primary">
-              Our database is fed with responses from{" "}
+              <FormattedMessage
+                defaultMessage="Our database is fed with responses from" 
+                id="search.label1"
+              />{" "}
               <span className="brussels">
-                residents of Brussels! <img src={UnderLine} alt="" />
+                <FormattedMessage
+                  defaultMessage="residents of Brussels! "
+                  id="search.label2"
+                />
+                <img src={UnderLine} alt="" />
               </span>
             </h2>
             <p>
-              Are you moving but unsure where you are going? Make the right
-              choice by first looking at the results here.
+              <FormattedMessage
+                defaultMessage={"Are you moving but unsure where you are going? Make the right choice by first looking at the results here."}
+                id="search.question"
+              />
             </p>
           </div>
 
@@ -178,41 +189,55 @@ const index = () => {
             <div className="body-data">
               <img src={Filter} alt="" className="body-icon" />
               <p className="body-text">
-                Filter by municipality, street and look at the streets with the
-                best rating.
+                <FormattedMessage
+                  defaultMessage="Filter by municipality, street and look at the streets with the best rating."
+                  id="search.p1"
+                />
               </p>
             </div>
 
             <div className="body-data">
               <img src={Street} alt="" className="body-icon" />
               <p className="body-text">
-                The <span className="bold-text">number "o"</span> in a street
-                designates the street in general and is calculated with data
-                from users who have not entered a number.
+                
+                <FormattedMessage 
+                  defaultMessage='The <b>number "o"</b> in a street designates the street in general and is calculated with data from users who have not entered a number.'
+                  id="search.p2"
+                  values={{
+                    b: (msg) => <span className="bold-text">{msg}</span>
+                  }}
+                />
               </p>
             </div>
 
             <div className="body-data">
               <img src={Review} alt="" className="body-icon" />
               <p className="body-text">
-                The average evaluation calculated from the average of all the
-                criteria is the <span className="bold-text">"Evaluation"</span>{" "}
-                column. You can also see the number of reviews in this issue in
-                the <span className="bold-text">"Wishes"</span> column.
+                <FormattedMessage 
+                  defaultMessage='The average evaluation calculated from the average of all the criteria is the <b>"Evaluation"</b> column. You can also see the number of reviews in this issue in the <b>"Wishes"</b> column.'
+                  id="search.p3"
+                  values={{
+                    b: (msg) => <span className="bold-text">{msg}</span>
+                  }}
+                />
               </p>
             </div>
 
             <div className="body-data">
               <img src={Like} alt="" className="body-icon" />
               <p className="body-text">
-                The average takes into account all the criteria, good and bad.
-                The higher the average, the better this street number is.
+                <FormattedMessage 
+                  defaultMessage="The average takes into account all the criteria, good and bad. The higher the average, the better this street number is."
+                  id="search.p4"
+                />
               </p>
             </div>
           </div>
           <div className="filters-container">
             <div className="filters-container__item">
-              <label className="input_label">Municipality: </label>
+              <label className="input_label">
+                <FormattedMessage defaultMessage="Municipality: " id="commune-" />
+              </label>
               <DropDownMenu
                 options={municipalityOptions}
                 selectedLV={municipalityLV}
@@ -220,7 +245,9 @@ const index = () => {
               />
             </div>
             <div className="filters-container__item">
-              <label className="input_label">Street: </label>
+              <label className="input_label">
+                <FormattedMessage defaultMessage="Street: " id="street-" />
+              </label>
               <StreetAutoSuggest
                 municipality={(municipalityLV?.value || "") as string}
                 street={filterStreet}
@@ -236,7 +263,7 @@ const index = () => {
                 const street = filterStreet;
                 fetchData(municipality, street);
               }}
-              text="Filter"
+              text={intl.formatMessage({ defaultMessage: "Filter", id: "search.filter" })}
               variant="primary"
               className="filter-btn"
             />
@@ -261,7 +288,7 @@ const index = () => {
           <Link to={"/"}>
             <Button
               onClick={() => {}}
-              text="Back To Home"
+              text={intl.formatMessage({ defaultMessage: "Back To Home", id: "search.backtohome" })}
               variant="secondary"
             />
           </Link>

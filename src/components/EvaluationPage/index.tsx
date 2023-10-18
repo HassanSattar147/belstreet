@@ -85,19 +85,19 @@ const PageTwo = () => {
       return false;
     }
     if (!isTrafficNREntered) {
-      toast.error(intl.formatMessage({ id: "invalid-airplane", defaultMessage: "Traffic noise not rated" }))
+      toast.error(intl.formatMessage({ id: "invalid-traffic-noise", defaultMessage: "Traffic noise not rated" }))
       return false;
     }
     if (!isGreenSpaceNR) {
-      toast.error(intl.formatMessage({ id: "invalid-neighbourhood", defaultMessage: "Green spaces not rated" }))
+      toast.error(intl.formatMessage({ id: "invalid-green-spaces", defaultMessage: "Green spaces not rated" }))
       return false;
     }
     if (!isTransportNR) {
-      toast.error(intl.formatMessage({ id: "invalid-airplane", defaultMessage: "Transport facility is not rated" }))
+      toast.error(intl.formatMessage({ id: "invalid-transport", defaultMessage: "Transport facility is not rated" }))
       return false;
     }
     if (!isCommercesNR) {
-      toast.error(intl.formatMessage({ id: "invalid-neighbourhood", defaultMessage: "Commerce not rated" }))
+      toast.error(intl.formatMessage({ id: "invalid-commerce", defaultMessage: "Commerce not rated" }))
       return false;
     }
 

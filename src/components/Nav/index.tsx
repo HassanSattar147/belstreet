@@ -9,7 +9,7 @@ interface Props {
 
 const Nav: React.FC<Props> = ({ style }) => {
 
-  const [locale, setLocale] = useState("en");
+  const [locale, setLocale] = useState("nl");
 
   useEffect(() => {
     const locale = Cookies.get("locale");
@@ -25,13 +25,13 @@ const Nav: React.FC<Props> = ({ style }) => {
         style={{ float: "right", color: "white", fontSize: 13, fontWeight: "500", display: "inline-block", margin: 16, }}
       >
         <span 
-          style={{ marginRight: 12, cursor: "pointer", color: locale === "en" ? "#db8c0d" : "" }}
+          style={{ marginRight: 12, cursor: "pointer", color: locale === "nl" ? "#db8c0d" : "" }}
           onClick={() => {
-            Cookies.set("locale", "en");
+            Cookies.set("locale", "nl");
             window.location.reload();
           }}
         >
-          En
+          Nl
         </span>
         |
         <span 
