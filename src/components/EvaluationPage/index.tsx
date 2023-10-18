@@ -153,7 +153,7 @@ const PageTwo = () => {
       <div className="page-two">
         <Nav />
 
-        <div className="page-two-content">
+        <div className="page-two-content" style={{ minHeight: "100vh" }}>
           <div className="page-two-content__header">
             <h2 className="color-primary">
             <FormattedMessage defaultMessage="Rate your street so that it can help other users." id="hp.m1"/>

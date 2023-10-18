@@ -162,6 +162,7 @@ const index = () => {
     <>
       <div className="page-three">
         <Nav />
+        <div style={{ minHeight: "100vh" }}>
         <div className="page-three-content">
           <div className="page-three-content__header">
             <h2 className="color-primary">
@@ -292,6 +293,7 @@ const index = () => {
               variant="secondary"
             />
           </Link>
+        </div>
         </div>
         <Footer />
       </div>

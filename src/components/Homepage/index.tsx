@@ -13,7 +13,7 @@ const Homepage = () => {
     <div>
       <Nav />
 
-      <div className="homepage-content">
+      <div className="homepage-content" style={{ minHeight: "100vh" }}>
         <div className="homepage-content-header">
           <h2>
           <FormattedMessage
