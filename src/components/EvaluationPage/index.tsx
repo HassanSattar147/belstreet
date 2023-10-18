@@ -214,16 +214,16 @@ const PageTwo = () => {
                 <p>
                 <FormattedMessage
                   id="hp.tos"
-                  defaultMessage="By clicking here, I accept the {terms} and {privacyPolicy}."
+                  defaultMessage="By clicking here, I accept the <terms>terms of use</terms> and <privacy>privacy policy</privacy>."
                   values={{
-                    terms: <a href="/terms">terms of use</a>,
-                    privacyPolicy: <a href="/privacy">privacy policy</a>
+                    terms: (msg) => <a href="/terms">{msg}</a>,
+                    privacy: (msg) => <a href="/privacy">{msg}</a>
                   }}
                 />
                 </p>
               </div>
               <Button
-                text="Send"
+                text={intl.formatMessage({ defaultMessage: "Send", id: "contact.send" })}
                 variant="primary"
                 onClick={async () => {
                   const canSubmit = await isSubmitable();
@@ -237,7 +237,7 @@ const PageTwo = () => {
             <div className="button-back-to-home-container">
               <Link to={"/"}>
                 <Button
-                  text="Back to home"
+                  text={ intl.formatMessage({ defaultMessage: "Back To Home", id: "form.backtohome" })}
                   variant="secondary"
                   onClick={() => {}}
                 />

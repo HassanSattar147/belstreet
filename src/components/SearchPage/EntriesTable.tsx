@@ -110,7 +110,7 @@ const EntriesTable: React.FC<Props> = ({
       <FormattedMessage id="table.assement" defaultMessage="Assessment" /></span>, dataIndex: "assessment", key: "7", width: 150 },
     {
       title: <span onClick={() => onOrder(10)}>
-        <FormattedMessage id="" defaultMessage="Number Of Votes" /></span>,
+        <FormattedMessage id="no.of.votes" defaultMessage="Number Of Votes" /></span>,
       dataIndex: "numberOfVotes",
       key: "8",
       width: 150,

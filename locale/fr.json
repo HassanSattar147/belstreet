@@ -47,7 +47,7 @@
   "hp.m1": "Notez votre rue pour aider d'autres utilisateurs.",
   "hp.m2": "Suivez les étapes suivantes pour évaluer votre rue et votre numéro. Pas besoin de s'inscrire et 100 % anonyme.",
   "hp.m3": "N'oubliez pas que vous pouvez laisser le champ du « numéro » vide. Dans ce cas, vous évaluez la rue en général, et non un numéro en particulier.",
-  "hp.tos": "En cliquant ici, j'accepte les {conditions} et la {politique de confidentialité}.",
+  "hp.tos": "En cliquant ici, j'accepte les <terms>conditions d'utilisation</terms> et la <privacy>politique de confidentialité</privacy>.",
   "hpg.l1": "Vous déménagez et souhaitez être sûr à 100 % qu'il n'y aura pas de surprises ? Une rue bruyante ou mal desservie ?",
   "hpg.l2": "BelStreet est à vos côtés pour vous aider à faire le bon choix.",
   "hpg.l3": "Évaluez votre rue en répondant à quelques questions ou consultez notre base de données pour consulter l'évaluation de toutes les rues de Bruxelles !",
