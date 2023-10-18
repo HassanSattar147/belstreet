@@ -18,11 +18,11 @@ const Homepage = () => {
           <h2>
           <FormattedMessage
             id="app.intro"
-            defaultMessage="Belstreet evaluates the quality of life in all the {streets} of Brussels."
+            defaultMessage="Belstreet evaluates the quality of life in all the <streets>streets of brussels</streets>."
             values={{
-              streets: (
+              streets: (msg) => (
                 <span className="special-text">
-                  streets of Brussels
+                  {msg}
                   <img src={UnderLine} alt="" />
                 </span>
               ),
