@@ -60,7 +60,7 @@ const PageTwo = () => {
     }
 
     const isMunicipalitySelected = typeof municipalityLV !== "undefined";
-    const isStreetEntered = true || selectedStreet.length > 0;
+    const isStreetEntered = street.length > 0;
     const isPlaneNREntered = planeNR > 0;
     const isNeighborNREntered = neighborNR > 0;
     const isTrafficNREntered = trafficNR > 0;
@@ -68,16 +68,40 @@ const PageTwo = () => {
     const isTransportNR = transportNR > 0;
     const isCommercesNR = commercesNR > 0;
 
-    console.log(">>>", {
-      isMunicipalitySelected,
-      isStreetEntered,
-      isPlaneNREntered,
-      isNeighborNREntered,
-      isTrafficNREntered,
-      isGreenSpaceNR,
-      isTransportNR,
-      isCommercesNR
-    });
+    if (!isMunicipalitySelected) {
+      toast.error(intl.formatMessage({ id: "invalid-commune", defaultMessage: "Municipility not rated" }))
+      return false;
+    }
+    if (!isStreetEntered) {
+      toast.error(intl.formatMessage({ id: "invalid-street", defaultMessage: "Street not rated" }))
+      return false;
+    }
+    if (!isPlaneNREntered) {
+      toast.error(intl.formatMessage({ id: "invalid-airplane", defaultMessage: "Airplane noise not rated" }))
+      return false;
+    }
+    if (!isNeighborNREntered) {
+      toast.error(intl.formatMessage({ id: "invalid-neighbourhood", defaultMessage: "Neighbourhood noise not rated" }))
+      return false;
+    }
+    if (!isTrafficNREntered) {
+      toast.error(intl.formatMessage({ id: "invalid-airplane", defaultMessage: "Traffic noise not rated" }))
+      return false;
+    }
+    if (!isGreenSpaceNR) {
+      toast.error(intl.formatMessage({ id: "invalid-neighbourhood", defaultMessage: "Green spaces not rated" }))
+      return false;
+    }
+    if (!isTransportNR) {
+      toast.error(intl.formatMessage({ id: "invalid-airplane", defaultMessage: "Transport facility is not rated" }))
+      return false;
+    }
+    if (!isCommercesNR) {
+      toast.error(intl.formatMessage({ id: "invalid-neighbourhood", defaultMessage: "Commerce not rated" }))
+      return false;
+    }
+
+
 
     return (
       isMunicipalitySelected &&
