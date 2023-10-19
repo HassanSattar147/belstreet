@@ -154,7 +154,7 @@ const EntriesTable: React.FC<Props> = ({
       title: "",
       key: "operation",
       fixed: "right",
-      width: 200,
+      width: 250,
       render: (renderParam) => (
         <a
           onClick={() => {
