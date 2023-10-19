@@ -154,7 +154,7 @@ const EntriesTable: React.FC<Props> = ({
       title: "",
       key: "operation",
       fixed: "right",
-      width: 120,
+      width: 160,
       render: (renderParam) => (
         <a
           onClick={() => {
@@ -168,7 +168,9 @@ const EntriesTable: React.FC<Props> = ({
           }}
           style={{
             color: "#000",
+            display: "inline-block"
           }}
+          className="primary filter-btn"
         >
           <FormattedMessage defaultMessage="View Details" id="table.viewdetails" />
         </a>
