@@ -5,7 +5,7 @@ function Footer () {
     return (
         <div className="footer">
             <span className="footer__copy">
-                © Alejandro Rubio 2022
+                © Alejandro Rubio 2023
             </span>
             <span className="footer__links">
                 <a href="/contact">
