@@ -53,6 +53,7 @@ const DropDownMenu = ({
         style={{
           paddingRight: "40px",
         }}
+        className={ selectedLV ? "black-placeholder" : "" }
         onFocus={() => setIsDDActive(true)}
         onBlur={() => {
           setTimeout(handleCloseDD, 100);

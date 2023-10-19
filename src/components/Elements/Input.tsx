@@ -12,6 +12,7 @@ export interface InputProps {
   name?: string
   type?: string
   required?: boolean;
+  className?: string;
 }
 
 const Input = ({
@@ -25,9 +26,10 @@ const Input = ({
   name,
   type,
   required,
+  className,
 }: InputProps) => {
   const commonProps = {
-    className: "input",
+    className: "input " + className,
     placeholder,
     defaultValue,
     style,

@@ -76,3 +76,16 @@ h4 {
         display: block !important;
     }
 }
+
+.black-placeholder::-webkit-input-placeholder { /* WebKit browsers */
+    color:    black;
+}
+.black-placeholder:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    black;
+}
+.black-placeholder::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    black;
+}
+.black-placeholder:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    black;
+}

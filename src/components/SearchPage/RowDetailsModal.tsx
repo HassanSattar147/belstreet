@@ -164,7 +164,7 @@ const data = await res.json();
             ].map((data, i) => {
               return (
                 <div key={i} className="ratings-row">
-                  <LabeledRatings {...data} />
+                  <LabeledRatings {...data} showDecimals={true} />
                 </div>
               );
             })}
