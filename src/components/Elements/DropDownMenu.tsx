@@ -89,10 +89,10 @@ const DropDownMenu = ({
                     setSelectedLV(option);
                     setTimeout(() => {
                       setSearchStr("");
-                    }, 100);
+                    }, 10);
                     setTimeout(() => {
                       handleCloseDD();
-                    }, 100);
+                    }, 10);
                   }}
                   style={{
                     backgroundColor: isSelected ? "#0003" : "",
