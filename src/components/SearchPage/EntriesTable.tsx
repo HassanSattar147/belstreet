@@ -154,7 +154,7 @@ const EntriesTable: React.FC<Props> = ({
       title: "",
       key: "operation",
       fixed: "right",
-      width: 250,
+      width: 220,
       render: (renderParam) => (
         <a
           onClick={() => {
@@ -170,7 +170,7 @@ const EntriesTable: React.FC<Props> = ({
             color: "#000",
             display: "inline-block",
             textAlign: "center",
-            width: 220,
+            width: 200,
           }}
           className="primary filter-btn"
         >
