@@ -182,7 +182,7 @@ const data = await res.json();
 
       <div className="row-details-comments">
         <div className="row-details-comments__heading">
-          <FormattedMessage defaultMessage="Comments" id="comments.d" />
+          <FormattedMessage defaultMessage="Comments" id="comments.d" /> ({commentsResponse.Comments.length})
         </div>
         {commentsResponse.Comments.map((comment) => {
           return (
