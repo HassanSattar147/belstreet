@@ -6,11 +6,13 @@ export interface RatingsProps {
   selectedCount: number;
   setSelectedCount: (x: number) => void;
   totalStars?: number;
+  showDecimals: boolean;
 }
 const Ratings: React.FC<RatingsProps> = ({
   selectedCount,
   setSelectedCount,
   totalStars = 5,
+  showDecimals
 }) => {
   return (
     <div className="ratings">
@@ -31,7 +33,7 @@ const Ratings: React.FC<RatingsProps> = ({
           );
         })}
       </div>
-      <div className="ratings-count">{selectedCount.toFixed(2)} <FormattedMessage id="stars" defaultMessage="Stars" /></div>
+      <div className="ratings-count">{selectedCount.toFixed(showDecimals ? 2 : 0)} <FormattedMessage id="stars" defaultMessage="Stars" /></div>
     </div>
   );
 };
