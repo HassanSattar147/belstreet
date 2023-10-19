@@ -6,7 +6,7 @@ export interface RatingsProps {
   selectedCount: number;
   setSelectedCount: (x: number) => void;
   totalStars?: number;
-  showDecimals: boolean;
+  showDecimals?: boolean;
 }
 const Ratings: React.FC<RatingsProps> = ({
   selectedCount,
