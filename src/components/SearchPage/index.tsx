@@ -164,7 +164,7 @@ const index = () => {
     <>
       <div className="page-three">
         <Nav />
-        <div style={{ minHeight: "100vh" }}>
+        <div style={{ minHeight: "calc(100vh - 200px)" }}>
         <div className="page-three-content">
           <div className="page-three-content__header">
             <h2 className="color-primary">

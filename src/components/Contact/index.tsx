@@ -15,7 +15,7 @@ function Contact() {
     <div style={{ background: "rgb(248, 248, 248)" }}>
       <Nav />
 
-      <div className="contact-container">
+      <div className="contact-container" style={{ minHeight: "calc(100vh - 200px)" }}>
         <div>
           <p>
             <FormattedMessage
