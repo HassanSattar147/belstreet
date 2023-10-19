@@ -170,6 +170,7 @@ const EntriesTable: React.FC<Props> = ({
             color: "#000",
             display: "inline-block",
             textAlign: "center",
+            width: 220,
           }}
           className="primary filter-btn"
         >
