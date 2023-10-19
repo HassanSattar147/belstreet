@@ -37,7 +37,7 @@ export const municipalityOptions = [
   { value: "1160", label: "1160 - Auderghem" },
   { value: "1170", label: "1170 - Watermael-Boitsfort" },
   { value: "1180", label: "1180 - Uccle" },
-  { value: "1190", label: "1190 - ForÃªt" },
+  { value: "1190", label: "1190 - Forêt" },
   { value: "1200", label: "1200 - Woluwe-Saint-Lambert" },
   { value: "1210", label: "1210 - Saint-Josse-ten-Noode" },
 ];
