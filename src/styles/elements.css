@@ -135,6 +135,7 @@
   border-radius: 10px;
   width: 160px;
   cursor: pointer;
+  color: #333 !important;
 }
 
 .secondary:hover {
