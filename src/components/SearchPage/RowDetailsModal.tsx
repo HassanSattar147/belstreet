@@ -211,7 +211,11 @@ const data = await res.json();
           }
         </div>
         <div className="row-details-footer">
-          <Button onClick={onClose} text="Close" variant="primary" />
+          <Button 
+            onClick={onClose} 
+            text={intl.formatMessage({ defaultMessage: "Close", id: "comments.close" })} 
+            variant="primary" 
+          />
         </div>
       </div>
     </div>

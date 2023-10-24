@@ -91,5 +91,8 @@
     "table.zip": "Postcode",
     "totalvotes.d": "Totaal aantal stemmen",
     "traffic.noise.d": "Verkeerslawaai",
-    "no.of.votes": "Aantal Stemmen"
-  }
+    "no.of.votes": "Aantal Stemmen",
+    "comments.showall": "Alles weergeven",
+    "comments.showless": "Minder weergeven",
+    "comments.close": "Sluiten"
+}

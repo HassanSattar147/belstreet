@@ -91,5 +91,8 @@
   "table.zip": "Code postal",
   "totalvotes.d": "Votes totaux",
   "traffic.noise.d": "Bruit de la circulation",
-  "no.of.votes": "Nombre de Votes"
+  "no.of.votes": "Nombre de Votes",
+  "comments.showall": "Afficher tout",
+  "comments.showless": "Afficher moins",
+  "comments.close": "Fermer"
 }
