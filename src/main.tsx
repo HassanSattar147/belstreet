@@ -16,7 +16,7 @@ const messages = {
   nl
 }
 
-const locale = Cookies.get("locale") as "nl" || "fr";
+const locale = Cookies.get("locale") as ("nl" | "fr");
 const selectedMessages = messages[locale || "nl"];
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
