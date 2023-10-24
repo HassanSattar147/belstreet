@@ -235,9 +235,9 @@ const EntriesTable: React.FC<Props> = ({
       key: "6",
       width: 150,
     },
-    { title: "Assessment", dataIndex: "assessment", key: "7", width: 150 },
+    { title: columns[9].title, dataIndex: "assessment", key: "7", width: 150 },
     {
-      title: columns[9].title,
+      title: columns[10].title,
       dataIndex: "numberOfVotes",
       key: "8",
       width: 150,
