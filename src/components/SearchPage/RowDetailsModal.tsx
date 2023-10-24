@@ -185,7 +185,7 @@ const data = await res.json();
         <div className="row-details-comments__heading">
           <FormattedMessage defaultMessage="Comments" id="comments.d" /> ({commentsResponse.Comments.length})
         </div>
-        {(!showAll ? commentsResponse.Comments.splice(0, 3) : commentsResponse.Comments).map((comment) => {
+        {(!showAll ? commentsResponse.Comments.slice(0, 3) : commentsResponse.Comments).map((comment) => {
           return (
             <div className="row-details-comments__body">
               <div className="person-name">{comment.Alias}</div>
