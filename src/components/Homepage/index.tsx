@@ -7,8 +7,12 @@ import evaluatePageIcon from "../../../public/assets/common/evaluate-page-icon.s
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import Footer from "../Elements/Footer";
+import useIsMobile from "../../utils/useIsMobile";
 
 const Homepage = () => {
+
+  const isMobile = useIsMobile();
+
   return (
     <div>
       <Nav />
@@ -21,10 +25,13 @@ const Homepage = () => {
             defaultMessage="Belstreet evaluates the quality of life in all the <streets>streets of brussels</streets>."
             values={{
               streets: (msg) => (
+                <>
+                { isMobile ? <br /> : null }
                 <span className="special-text">
                   {msg}
                   <img src={UnderLine} alt="" />
                 </span>
+                </>
               ),
             }}
           />
