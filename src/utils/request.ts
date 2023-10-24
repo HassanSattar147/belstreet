@@ -1,5 +1,6 @@
 export const api = "http://185.77.96.45:8080";
 //export const api = "http://localhost:3030";
+//export const api = "http://192.168.18.5/belstreet"
 
 const toQuery = (query: {[x: string]: string}) => {
     let queryStr = '';

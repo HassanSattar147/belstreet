@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import icon_plane from "../../../public/assets/common/icon-plane.svg";
 import icon_hear from "../../../public/assets/common/icon-hear.svg";
 import icon_car from "../../../public/assets/common/icon-car.svg";
@@ -39,6 +39,7 @@ const RowDetailsModal = ({
   onClose: () => void;
   dataRow: DataRow | undefined;
 }) => {
+  const [showAll, setShowAll] = useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
   const [commentsResponse, setCommentsResponse] =
     React.useState<CommentsResponse>();
@@ -184,7 +185,7 @@ const data = await res.json();
         <div className="row-details-comments__heading">
           <FormattedMessage defaultMessage="Comments" id="comments.d" /> ({commentsResponse.Comments.length})
         </div>
-        {commentsResponse.Comments.map((comment) => {
+        {(!showAll ? commentsResponse.Comments.splice(0, 3) : commentsResponse.Comments).map((comment) => {
           return (
             <div className="row-details-comments__body">
               <div className="person-name">{comment.Alias}</div>
@@ -195,7 +196,20 @@ const data = await res.json();
             </div>
           );
         })}
-
+        <div>
+          {
+            commentsResponse.Comments.length > 3 &&
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", textDecoration: "underline", cursor: "pointer" }}>
+              <span onClick={() => setShowAll(!showAll)}>
+              {
+                showAll ?
+                <FormattedMessage id="comments.showless" defaultMessage="Show Less" />
+                : <FormattedMessage id="comments.showall" defaultMessage="Show All" />
+              }
+              </span>
+            </div>
+          }
+        </div>
         <div className="row-details-footer">
           <Button onClick={onClose} text="Close" variant="primary" />
         </div>
