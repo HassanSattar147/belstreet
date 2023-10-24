@@ -89,3 +89,7 @@ h4 {
 .black-placeholder:-ms-input-placeholder { /* Internet Explorer 10+ */
     color:    black;
 }
+
+button {
+    color: white !important;
+}

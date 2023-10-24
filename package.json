@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "rb": "react-scripts build",
-    "dev": "vite",
+    "dev": "vite --host",
     "srv": "npx serve -s dist -p 80",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
